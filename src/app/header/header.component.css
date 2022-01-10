@@ -1,0 +1,70 @@
+.bg-light {
+    background-color: #ffffff !important;
+}
+
+.navbar .container-fluid {
+    margin: 0 5rem;
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 991px) {
+    .navbar .container-fluid {
+        margin: 0 1rem;
+    }
+}
+
+.navbar-brand img {
+    height: 3rem;
+}
+
+.navbar-collapse {
+    height: 3rem;
+    margin-top: 0.6rem;
+}
+
+.d-flex.search-form {
+    width: 100%;
+}
+
+.d-flex.search-form input {
+    background-color: #F5F5F5;
+    border: 0;
+    border-radius: 0;
+}
+
+.d-flex.search-form input:focus {
+    box-shadow: none;
+}
+
+.d-flex.search-form .input-group-text {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    background-color: #F57224;
+}
+
+.search-form .input-group-text .fa-search {
+    color: #ffffff;
+}
+
+.d-flex.search-form, .nav-item {
+    margin: 0 2rem;
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 991px) {
+    .d-flex.search-form, .nav-item {
+        margin: 0;
+    }
+    .nav-item {
+        text-align: center;
+    }
+}
+
+.nav-item .fa-shopping-cart {
+    font-size: 2rem;
+    padding-top: 0.3rem;
+}
+
+.nav-link.download-app img {
+    height: 2rem;
+}
