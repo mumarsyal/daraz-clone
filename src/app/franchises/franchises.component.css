@@ -26,6 +26,7 @@
 .franchise .card-title {
 	font-size: 1.2rem;
 	font-weight: 500;
+	padding-top: 4px;
 }
 
 @media (max-width: 991px) {
@@ -51,7 +52,7 @@
 
 .franchise span.pull-right {
 	margin-right: 0.3rem;
-	padding-top: 2px;
+	padding-top: 4px;
 }
 
 .franchise .fa-chevron-right {
