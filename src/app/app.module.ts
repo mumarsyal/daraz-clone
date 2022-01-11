@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { FranchisesComponent } from './franchises/franchises.component';
+import { FlashSaleComponent } from './flash-sale/flash-sale.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CarouselComponent,
-    FranchisesComponent
+    FranchisesComponent,
+    FlashSaleComponent
   ],
   imports: [
     BrowserModule

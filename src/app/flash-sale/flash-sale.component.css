@@ -1,0 +1,107 @@
+.section-title {
+	color: #757575;
+}
+
+.card {
+	border-radius: 0%;
+}
+
+.card-header {
+	background-color: transparent;
+}
+
+.card-header div {
+	display: inline-block;
+}
+
+.card-header .info {
+	font-weight: 500;
+	font-size: 14px;
+	color: #f57224;
+}
+
+.card-header .timer {
+	margin-left: 5rem;
+}
+
+.card-header .timer span:first-child {
+	padding: 0 1rem;
+}
+
+.card-header .timer .timer-time {
+	display: inline-block;
+	height: 35px;
+	width: 40px;
+	background-color: #ff6801;
+	color: #fff;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0 0.5rem;
+	border-radius: 2px;
+	line-height: 35px;
+}
+
+.card-header .timer .timer-colon {
+	color: #ff6801;
+}
+
+.btn-outline-warning {
+	border: 1px solid #ff6801;
+	border-radius: 0%;
+	color: #ff6801;
+	background-color: transparent;
+	text-transform: uppercase;
+	height: 35px;
+	text-align: center;
+	font-size: 14px;
+}
+
+.card {
+	border: 0;
+}
+
+.sale-item .card-img-top {
+	height: 10rem;
+}
+
+.sale-item .card-title {
+	height: 36px;
+	line-height: 18px;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	margin-bottom: 4px;
+	font-size: 14px;
+	color: #000;
+}
+
+.sale-item a {
+	text-decoration: none;
+}
+
+.sale-item a:hover {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.sale-item .price {
+	color: #ff6801;
+}
+
+.original-price div {
+	display: inline-block;
+}
+
+.original-price .price-was {
+	color: #9e9e9e;
+	font-size: 12px;
+	line-height: 12px;
+	text-decoration: line-through;
+	padding-right: 1rem;
+}
+
+.original-price .discount {
+	color: #000;
+	font-size: 12px;
+	line-height: 12px;
+}

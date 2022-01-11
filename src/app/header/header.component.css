@@ -14,6 +14,10 @@
 	text-decoration: none;
 }
 
+.navbar-grey nav .text-sm-center.active {
+	color: #f57224;
+}
+
 .navbar-grey nav .text-sm-center:hover {
 	color: #f57224;
 	text-decoration: underline;
