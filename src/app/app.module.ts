@@ -9,6 +9,7 @@ import { FlashSaleComponent } from './flash-sale/flash-sale.component';
 import { CollectionsComponent } from './collections/collections.component';
 import { MallComponent } from './mall/mall.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { ForYouComponent } from './for-you/for-you.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CategoriesComponent } from './categories/categories.component';
     FlashSaleComponent,
     CollectionsComponent,
     MallComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    ForYouComponent
   ],
   imports: [
     BrowserModule

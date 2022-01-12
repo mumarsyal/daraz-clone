@@ -1,0 +1,119 @@
+.section-title {
+	color: #424242;
+	display: inline-block;
+	font-size: 1.5rem;
+}
+
+.for-you .for-you-card {
+	border: none;
+	border-radius: 0%;
+	padding: 0;
+	margin-right: 0.8%;
+	margin-bottom: 1rem;
+}
+
+.for-you .for-you-card:last-child {
+	margin-right: 0%;
+}
+
+@media (min-width: 992px) {
+	.for-you .for-you-card:nth-child(6),
+	.for-you .for-you-card:nth-child(12) {
+		margin-right: 0%;
+	}
+	.col-lg-2 {
+		width: 16%;
+	}
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+	.for-you .for-you-card:nth-child(3),
+	.for-you .for-you-card:nth-child(6),
+	.for-you .for-you-card:nth-child(9),
+	.for-you .for-you-card:nth-child(12) {
+		margin-right: 0%;
+	}
+	.col-sm-4 {
+		width: 32.8%;
+	}
+}
+
+@media (max-width: 575px) {
+	.for-you .for-you-card:nth-child(2),
+	.for-you .for-you-card:nth-child(4),
+	.for-you .for-you-card:nth-child(6),
+	.for-you .for-you-card:nth-child(8),
+	.for-you .for-you-card:nth-child(10),
+	.for-you .for-you-card:nth-child(12) {
+		margin-right: 0%;
+	}
+	.col-6 {
+		width: 49.6%;
+	}
+}
+
+.for-you .for-you-card .card-img-top {
+	height: 10rem;
+}
+
+.for-you .for-you-card .card-title {
+	height: 36px;
+	line-height: 18px;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	margin-bottom: 4px;
+	font-size: 14px;
+	color: #000;
+}
+
+.for-you .for-you-card a {
+	text-decoration: none;
+}
+
+.for-you .for-you-card a:hover {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.for-you .for-you-card .card-body {
+	padding: 1rem 0.5rem 0.5rem;
+}
+
+.for-you .for-you-card .price {
+	color: #ff6801;
+}
+
+.original-price div {
+	display: inline-block;
+}
+
+.original-price .price-was {
+	color: #9e9e9e;
+	font-size: 12px;
+	line-height: 12px;
+	text-decoration: line-through;
+	padding-right: 1rem;
+}
+
+.original-price .discount {
+	color: #000;
+	font-size: 12px;
+	line-height: 12px;
+}
+
+.for-you .for-you-card .rating-reviews > div {
+	display: inline-block;
+}
+
+.for-you-card .rating-reviews .rating .fa-star {
+	color: #faca51;
+	margin-right: 3px;
+	font-size: 11px;
+	line-height: 11px;
+}
+
+.for-you-card .rating-reviews .reviews {
+	font-size: 12px;
+	color: #9e9e9e;
+}
