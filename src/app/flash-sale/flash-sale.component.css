@@ -1,5 +1,6 @@
 .section-title {
 	color: #757575;
+	margin-left: -0.8rem;
 }
 
 .card {
@@ -58,6 +59,10 @@
 
 .card {
 	border: 0;
+}
+
+.card-body {
+	padding: 1rem 0;
 }
 
 .sale-item .card-img-top {

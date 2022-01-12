@@ -4,12 +4,17 @@
 	height: 40px;
 	padding-right: 0%;
 	margin-right: 1%;
-	width: 32.33333333%;
+	width: 32.66%;
+}
+
+.franchise:last-child {
+	margin-right: 0%;
 }
 
 @media (max-width: 575px) {
 	.franchise {
 		width: 49%;
+		margin-bottom: 1%;
 	}
 }
 

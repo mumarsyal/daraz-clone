@@ -1,60 +1,63 @@
 <h3 class="section-title">Flash Sale</h3>
 
-<div class="card">
-	<div class="card-header">
-		<div class="info">
-			<span>On Sale Now</span>
+<div class="row">
+	<div class="card">
+		<div class="card-header">
+			<div class="info">
+				<span>On Sale Now</span>
+			</div>
+			<div class="timer">
+				<span>Ending in</span>
+				<span class="timer-time">06</span>
+				<span class="timer-colon">:</span>
+				<span class="timer-time">06</span>
+				<span class="timer-colon">:</span>
+				<span class="timer-time">06</span>
+			</div>
+			<div class="shop-more pull-right">
+				<a href="" class="btn btn-outline-warning">Shop More</a>
+			</div>
 		</div>
-		<div class="timer">
-			<span>Ending in</span>
-			<span class="timer-time">06</span>
-			<span class="timer-colon">:</span>
-			<span class="timer-time">06</span>
-			<span class="timer-colon">:</span>
-			<span class="timer-time">06</span>
-		</div>
-		<div class="shop-more pull-right">
-			<a href="" class="btn btn-outline-warning">Shop More</a>
-		</div>
-	</div>
 
-	<div class="card-body">
-		<div class="row">
-			<div
-				class="col-sm-4 col-lg-2 card sale-item"
-				*ngFor="let saleItem of saleItems"
-			>
-				<a href="">
-					<img
-						[src]="saleItem.image_src"
-						class="card-img-top"
-						alt="..."
-					/>
-					<div class="card-body">
-						<div class="card-title">
-							{{ saleItem.title }}
-						</div>
-						<div class="price">
-							<span class="currency">Rs.</span>
-							<span class="price">
-								{{ saleItem.price | number: "":"en-US" }}
-							</span>
-						</div>
-						<div class="original-price">
-							<div class="price-was">
+		<div class="card-body">
+			<div class="row">
+				<div
+					class="col-sm-4 col-lg-2 card sale-item"
+					*ngFor="let saleItem of saleItems"
+				>
+					<a href="">
+						<img
+							[src]="saleItem.image_src"
+							class="card-img-top"
+							alt="..."
+						/>
+						<div class="card-body">
+							<div class="card-title">
+								{{ saleItem.title }}
+							</div>
+							<div class="price">
 								<span class="currency">Rs.</span>
-								<span class="original-price">
-									{{
-										saleItem.orig_price | number: "":"en-US"
-									}}
+								<span class="price">
+									{{ saleItem.price | number: "":"en-US" }}
 								</span>
 							</div>
-							<div class="discount">
-								-{{ saleItem.discount | number: "1.0-0" }}%
+							<div class="original-price">
+								<div class="price-was">
+									<span class="currency">Rs.</span>
+									<span class="original-price">
+										{{
+											saleItem.orig_price
+												| number: "":"en-US"
+										}}
+									</span>
+								</div>
+								<div class="discount">
+									-{{ saleItem.discount | number: "1.0-0" }}%
+								</div>
 							</div>
 						</div>
-					</div>
-				</a>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
