@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { FranchisesComponent } from './franchises/franchises.component';
 import { FlashSaleComponent } from './flash-sale/flash-sale.component';
+import { CollectionsComponent } from './collections/collections.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { FlashSaleComponent } from './flash-sale/flash-sale.component';
     HeaderComponent,
     CarouselComponent,
     FranchisesComponent,
-    FlashSaleComponent
+    FlashSaleComponent,
+    CollectionsComponent
   ],
   imports: [
     BrowserModule
