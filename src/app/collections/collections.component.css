@@ -19,6 +19,10 @@
 	border-radius: 0%;
 }
 
+.collections .collections-card:hover {
+	box-shadow: -2px -2px 4px 0 rgba(0,0,0,.25);
+}
+
 @media (min-width: 576px) {
 	.collections .collections-card:nth-child(2),
 	.collections .collections-card:nth-child(4),
