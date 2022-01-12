@@ -1,0 +1,14 @@
+.container {
+	padding-top: 22px;
+	padding-bottom: 30px;
+}
+
+@media (min-width: 576px) {
+	.container {
+		padding: 22px 0 30px;
+	}
+}
+
+app-site-map {
+	background-color: #2e2e54;
+}

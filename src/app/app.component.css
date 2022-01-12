@@ -7,3 +7,12 @@
 .page-section {
 	margin-bottom: 1.5rem;
 }
+
+.container-fluid.footer {
+	width: 100%;
+	padding: 0;
+}
+
+.container-fluid.footer .site-map {
+	background-color: #2e2e54;
+}

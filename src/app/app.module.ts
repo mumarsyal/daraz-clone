@@ -10,6 +10,8 @@ import { CollectionsComponent } from './collections/collections.component';
 import { MallComponent } from './mall/mall.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ForYouComponent } from './for-you/for-you.component';
+import { FooterComponent } from './footer/footer.component';
+import { SiteMapComponent } from './footer/site-map/site-map.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ForYouComponent } from './for-you/for-you.component';
     CollectionsComponent,
     MallComponent,
     CategoriesComponent,
-    ForYouComponent
+    ForYouComponent,
+    FooterComponent,
+    SiteMapComponent
   ],
   imports: [
     BrowserModule

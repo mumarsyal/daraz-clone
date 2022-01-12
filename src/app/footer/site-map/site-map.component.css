@@ -1,0 +1,76 @@
+.site-map {
+	color: #fff;
+}
+
+.site-map ul {
+	list-style: none;
+	padding: 0%;
+	font-size: 12px;
+	font-weight: 200;
+	line-height: 18px;
+}
+
+.site-map ul a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.site-map ul a:hover {
+	text-decoration: underline;
+}
+
+.site-map .app-links .qr-code {
+	padding-right: 0%;
+}
+
+.site-map .app-links .qr-code img {
+	width: 100px;
+	border-radius: 10%;
+}
+
+.site-map .app-links p {
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 18px;
+	margin-bottom: 0;
+}
+
+@media (min-width: 576px) {
+	.site-map .app-links .daraz-logo {
+		padding-left: 0%;
+	}
+}
+
+.site-map .app-links .daraz-logo img {
+	width: 3rem;
+	margin-top: 1rem;
+}
+
+.site-map .app-links .happy {
+	color: #f57224;
+}
+
+.site-map .app-links .app-stores {
+	margin-top: 25px;
+}
+
+.site-map .app-links .app-stores img {
+	width: 30%;
+	height: 40px;
+	border: 1px solid #fff;
+	border-radius: 10px;
+}
+
+.site-map .app-links .app-stores li {
+	margin-left: 3%;
+}
+
+@media (min-width: 992px) or (max-width: 575px) {
+	.site-map .app-links .app-stores img {
+		width: 20%;
+	}
+
+	.site-map .app-links .app-stores li {
+		margin-left: 2%;
+	}
+}
