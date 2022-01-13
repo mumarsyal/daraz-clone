@@ -95,3 +95,11 @@
 .nav-link.download-app img {
 	height: 2rem;
 }
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler:hover {
+    box-shadow: 0 0 0 .25rem;
+}
