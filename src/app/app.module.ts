@@ -14,6 +14,9 @@ import { SiteMapComponent } from './site-map/site-map.component';
 import { FindUsComponent } from './find-us/find-us.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ProductsComponent } from './products/products.component';
+import { ProductsListComponent } from './products/products-list/products-list.component';
+import { ProductItemComponent } from './products/product-item/product-item.component';
 
 @NgModule({
 	declarations: [
@@ -29,6 +32,9 @@ import { AppRoutingModule } from './app-routing.module';
 		SiteMapComponent,
 		FindUsComponent,
 		HomePageComponent,
+  ProductsComponent,
+  ProductsListComponent,
+  ProductItemComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule],
 	providers: [],

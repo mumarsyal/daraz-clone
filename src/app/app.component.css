@@ -1,6 +1,7 @@
 .container-fluid.header {
 	width: 100%;
 	padding: 0;
+	background-color: #fff;
 }
 
 .container-fluid.footer {

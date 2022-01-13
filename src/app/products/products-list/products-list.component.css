@@ -1,0 +1,129 @@
+aside {
+	width: 17%;
+	padding-left: 0;
+	padding-right: 0.5rem;
+	margin-left: 0;
+	float: left;
+}
+
+aside .filter-type {
+	font-size: 14px;
+	color: #212121;
+}
+
+aside .filter-options {
+	margin-top: 0.5rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid #ececec;
+}
+
+aside .filter-options,
+aside .filter-options a {
+	font-size: 13px;
+	line-height: 1.5rem;
+	color: #757575;
+}
+
+aside .filter-options a {
+	display: block;
+	text-decoration: none;
+}
+
+aside .filter-options label {
+	display: block;
+}
+
+aside .filter-options input {
+	margin-right: 0.5rem;
+}
+
+aside .filter-options a:hover,
+aside .filter-options label:hover {
+	color: #f57224;
+}
+
+.price .filter-options > input {
+	width: 35%;
+}
+
+.price .filter-options > input:first-child {
+	margin: 0%;
+}
+
+.price .filter-options > span {
+	width: 5%;
+}
+
+.price .filter-options > button {
+    width: 20%;
+    background-color: #F57224;
+    color: #fff;
+    padding: 3.5px 0;
+    border: none;
+}
+
+main {
+	width: 83%;
+	margin-left: 17%;
+}
+
+main > .row {
+	width: 100%;
+	--bs-gutter-x: 0;
+}
+
+.info-controls {
+	border-bottom: 1px solid #eff0f5;
+	margin-bottom: 1rem;
+}
+
+.info-controls div {
+	display: inline-block;
+	margin-bottom: 1rem;
+	font-size: 14px;
+}
+
+.info-controls .info {
+	width: 40%;
+	text-align: start;
+}
+
+.info-controls .controls {
+	width: 60%;
+	text-align: end;
+}
+
+.info-controls .controls .sort-by {
+	width: 50%;
+}
+
+.info-controls .controls .sort-by label {
+	width: 20%;
+}
+
+.info-controls .controls .sort-by select {
+	width: 60%;
+    background-color: transparent;
+    box-shadow: none;
+    border: 1px solid #757575;
+    height: 2rem;
+    border-radius: 0.25rem;
+}
+
+.info-controls .view-as i {
+	color: #183545;
+	font-size: 1.5rem;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+@media (max-width: 991px) {
+	aside {
+		width: 100%;
+	}
+
+	main {
+		width: 100%;
+		margin-left: auto;
+	}
+}

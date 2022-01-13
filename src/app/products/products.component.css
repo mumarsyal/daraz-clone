@@ -1,0 +1,21 @@
+.container {
+	padding: 0 0 1.5rem;
+}
+
+nav#breadcrumb {
+	height: 3rem;
+	border-bottom: 1px solid #eff0f5;
+	--bs-breadcrumb-divider: ">";
+	margin-bottom: 1rem;
+}
+
+nav#breadcrumb .breadcrumb {
+	height: 3rem;
+	line-height: 3rem;
+	margin-bottom: 0;
+	font-size: 14px;
+}
+
+nav#breadcrumb .breadcrumb a {
+	text-decoration: none;
+}
