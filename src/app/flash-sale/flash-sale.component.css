@@ -9,6 +9,7 @@
 
 .card-header {
 	background-color: transparent;
+	padding: 0.5rem 0;
 }
 
 .card-header div {
@@ -19,10 +20,13 @@
 	font-weight: 500;
 	font-size: 14px;
 	color: #f57224;
+	width: 20%;
+	vertical-align: middle;
+	padding-right: 0.5rem;
 }
 
 .card-header .timer {
-	margin-left: 5rem;
+	width: 60%;
 }
 
 .card-header .timer span:first-child {
@@ -37,13 +41,51 @@
 	color: #fff;
 	text-align: center;
 	vertical-align: middle;
-	margin: 0 0.5rem;
 	border-radius: 2px;
 	line-height: 35px;
 }
 
 .card-header .timer .timer-colon {
 	color: #ff6801;
+	margin: 0 0.5rem;
+}
+
+@media (max-width: 575px) {
+	.card-header .timer span:first-child {
+		padding: 0 0.5rem 0 0;
+	}
+
+	.card-header .info {
+		width: 25%;
+		text-align: center;
+	}
+
+	.card-header .timer {
+		width: 75%;
+	}
+
+	.card-header .timer .timer-time {
+		width: 20%;
+	}
+
+	.card-header .timer .timer-colon {
+		width: 5%;
+		margin: 0;
+		text-align: center;
+		display: inline-block;
+	}
+}
+
+.card-header .shop-more {
+	width: 20%;
+	text-align: end;
+}
+
+@media (max-width: 575px) {
+	.card-header .shop-more {
+		display: block;
+		margin: 1rem auto 0;
+	}
 }
 
 .btn-outline-warning {
@@ -52,9 +94,9 @@
 	color: #ff6801;
 	background-color: transparent;
 	text-transform: uppercase;
-	height: 35px;
 	text-align: center;
 	font-size: 14px;
+	padding: 0.375rem;
 }
 
 .card {
