@@ -17,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProductsComponent } from './products/products.component';
 import { ProductsListComponent } from './products/products-list/products-list.component';
 import { ProductItemComponent } from './products/product-item/product-item.component';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 
 @NgModule({
 	declarations: [
@@ -35,6 +36,7 @@ import { ProductItemComponent } from './products/product-item/product-item.compo
   ProductsComponent,
   ProductsListComponent,
   ProductItemComponent,
+  ProductDetailComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule],
 	providers: [],

@@ -2,6 +2,12 @@
 	padding: 0 0 1.5rem;
 }
 
+@media (max-width: 575px) {
+	.container {
+		max-width: 96%;
+	}
+}
+
 nav#breadcrumb {
 	height: 3rem;
 	border-bottom: 1px solid #eff0f5;
