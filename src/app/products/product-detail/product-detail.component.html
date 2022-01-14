@@ -351,3 +351,93 @@
 		</div>
 	</div>
 </div>
+
+<div class="product-details">
+	<div class="row">
+		<div class="col-lg-10 details">
+			<div class="header">
+				<h5>
+					Product details of
+					{{
+						"[Buy Smart] Fridge Storage Basket Adjustable – Stretchable – Retractable & Reusable | Fridge Storage Organizer | Space Saving Fridge Basket | Plastic Basket | Kitchen Basket | Fruit & Vegetable Basket | Cabinet and Drawer Organizer | Space organizer Box"
+					}}
+				</h5>
+			</div>
+			<div class="features">
+				<div class="row">
+					<div class="col-md-6">
+						<ul>
+							<li>
+								Adjustable Fridge Storage Organizer is a
+								multipurpose basket.
+							</li>
+							<li>
+								It has unique design to adjust the size
+								according to your need.
+							</li>
+							<li>
+								High Quality Plastic makes it durable and
+								reliable.
+							</li>
+							<li>
+								The Right Solution for your fridge storage space
+								problems.
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-6">
+						<ul>
+							<li>
+								Available in variety of colors to choose from.
+							</li>
+							<li>
+								Make the right decision and buy this space
+								organizer from our store.
+							</li>
+							<li>Size is mentioned in description pictures.</li>
+							<li>
+								If you have any queries feel free to contact us
+								via CHAT.
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="images">
+				<h1>Stretchable Fridge Storage Basket</h1>
+				<img
+					src="assets/images/products/fridge-storage-basket.jpg"
+					alt=""
+				/>
+				<div *ngIf="showAllImages">
+					<img
+						src="assets/images/products/fridge-storage-basket.jpg"
+						alt=""
+					/>
+					<img
+						src="assets/images/products/fridge-storage-basket.jpg"
+						alt=""
+					/>
+				</div>
+				<div class="show-more">
+					<button
+						class="btn btn-primary"
+						type="button"
+						(click)="showAllImages = !showAllImages"
+					>
+						{{ showAllImages ? 'SHOW LESS' : 'SHOW MORE' }}
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-2 from-store">
+			<div class="header">
+				<h5>From The Same Store</h5>
+			</div>
+			<app-product-item></app-product-item>
+			<app-product-item></app-product-item>
+			<app-product-item></app-product-item>
+		</div>
+	</div>
+</div>

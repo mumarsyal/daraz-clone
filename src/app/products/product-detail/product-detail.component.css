@@ -364,7 +364,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .product-overview .aside .content > .sub {
-	color: #A9A9A9;
+	color: #a9a9a9;
 	font-size: 12px;
 }
 
@@ -418,9 +418,79 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .product-overview .aside .sold-by .go-to-store {
-    padding: 1rem 1rem 0;
-    text-align: center;
-    color: #1A9CB7;
-    text-transform: uppercase;
-    font-size: 15px;
+	padding: 1rem 1rem 0;
+	text-align: center;
+	color: #1a9cb7;
+	text-transform: uppercase;
+	font-size: 15px;
+}
+
+.product-details {
+	margin-top: 1rem;
+}
+
+.product-details .header {
+	background-color: #fafafa;
+	padding: 0.5rem;
+}
+
+.product-details .header h5 {
+	font-size: 16px;
+	color: #212121;
+}
+
+.product-details .details .header h5 {
+	letter-spacing: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.product-details .features {
+	padding: 1rem 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.product-details .features ul {
+	margin: 0;
+}
+
+.product-details .features li {
+	font-size: 14px;
+	line-height: 18px;
+}
+
+.product-details .images {
+	padding-top: 2rem;
+}
+
+.product-details .images h1 {
+	font-size: 2rem;
+	font-weight: 600;
+}
+
+.product-details .images img {
+	display: block;
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+.product-details .images .show-more {
+	text-align: center;
+}
+
+.product-details .images .show-more > button {
+	background-color: transparent;
+	color: #1A9CB7;
+	border: 1px solid #1A9CB7;
+	border-radius: 0;
+}
+
+.product-details .images .show-more > button:hover {
+	background-color: #1A9CB7;
+	color: #fff;
+}
+
+.product-details .images .show-more > button:focus {
+	box-shadow: none;
 }
