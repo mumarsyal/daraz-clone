@@ -403,14 +403,13 @@
 					</div>
 				</div>
 			</div>
-
 			<div class="images">
 				<h1>Stretchable Fridge Storage Basket</h1>
 				<img
 					src="assets/images/products/fridge-storage-basket.jpg"
 					alt=""
 				/>
-				<div *ngIf="showAllImages">
+				<div *ngIf="detailsExpanded" class="expanded-images">
 					<img
 						src="assets/images/products/fridge-storage-basket.jpg"
 						alt=""
@@ -420,15 +419,57 @@
 						alt=""
 					/>
 				</div>
-				<div class="show-more">
-					<button
-						class="btn btn-primary"
-						type="button"
-						(click)="showAllImages = !showAllImages"
-					>
-						{{ showAllImages ? 'SHOW LESS' : 'SHOW MORE' }}
-					</button>
+			</div>
+			<div *ngIf="detailsExpanded" class="specifications">
+				<div class="header">
+					<h5>
+						Specifications of
+						{{
+							"[Buy Smart] Fridge Storage Basket Adjustable – Stretchable – Retractable & Reusable | Fridge Storage Organizer | Space Saving Fridge Basket | Plastic Basket | Kitchen Basket | Fruit & Vegetable Basket | Cabinet and Drawer Organizer | Space organizer Box"
+						}}
+					</h5>
 				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="spec">
+							<div class="title">Brand</div>
+							<div class="value">No Brand</div>
+						</div>
+						<div class="spec">
+							<div class="title">Material</div>
+							<div class="value">ABS plastic</div>
+						</div>
+						<div class="spec">
+							<div class="title">Express delivery</div>
+							<div class="value">Islamabad</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="spec">
+							<div class="title">SKU</div>
+							<div class="value">229946636_PK-1450306391</div>
+						</div>
+						<div class="spec">
+							<div class="title">Model</div>
+							<div class="value">Fresh Import</div>
+						</div>
+						<div class="spec">
+							<div class="title">What’s in the box</div>
+							<div class="value">
+								1 x Adjustable Fridge Storage Basket
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="show-more">
+				<button
+					class="btn btn-primary"
+					type="button"
+					(click)="detailsExpanded = !detailsExpanded"
+				>
+					{{ detailsExpanded ? "SHOW LESS" : "SHOW MORE" }}
+				</button>
 			</div>
 		</div>
 		<div class="col-lg-2 from-store">

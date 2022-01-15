@@ -435,7 +435,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .product-details .header h5 {
-	font-size: 16px;
+	font-size: 18px;
+	font-weight: 600;
 	color: #212121;
 }
 
@@ -444,6 +445,11 @@ input[type="number"]::-webkit-outer-spin-button {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+.product-details .specifications .header {
+	background-color: #fff;
+	padding: 0.5rem 0;
 }
 
 .product-details .features {
@@ -475,22 +481,41 @@ input[type="number"]::-webkit-outer-spin-button {
 	margin-bottom: 1rem;
 }
 
-.product-details .images .show-more {
+.product-details .images .expanded-images {
+	padding-bottom: 2rem;
+	border-bottom: 1px solid #ccc;
+}
+
+.product-details .details .show-more {
 	text-align: center;
 }
 
-.product-details .images .show-more > button {
+.product-details .details .show-more > button {
 	background-color: transparent;
 	color: #1A9CB7;
 	border: 1px solid #1A9CB7;
 	border-radius: 0;
 }
 
-.product-details .images .show-more > button:hover {
+.product-details .details .show-more > button:hover {
 	background-color: #1A9CB7;
 	color: #fff;
 }
 
-.product-details .images .show-more > button:focus {
+.product-details .details .show-more > button:focus {
 	box-shadow: none;
+}
+
+.product-details .specifications .spec {
+    margin-bottom: 0.75rem;
+}
+
+.product-details .specifications .spec .title {
+    color: #757575;
+}
+
+.product-details .specifications .spec .title,
+.product-details .specifications .spec .value {
+    word-break: break-word;
+    font-size: 16px;
 }

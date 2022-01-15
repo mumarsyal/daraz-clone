@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
-	showAllImages: boolean = false;
+	detailsExpanded: boolean = false;
 
 	constructor() {}
 
