@@ -628,7 +628,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .product-rate-review .reviews .comments .by-user .verified-purchase {
-	color: #4CAF50;
+	color: #4caf50;
 }
 
 .product-rate-review .reviews .comments .comment {
@@ -658,13 +658,13 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .product-rate-review .reviews .comments .reply {
-	background-color: #F8F8F8;
+	background-color: #f8f8f8;
 	padding: 0.5rem 0.5rem 0.5rem 2.5rem;
 	margin-top: 1rem;
 }
 
 .product-rate-review .reviews .comments .reply .info {
-	color: #FF330C;
+	color: #ff330c;
 	margin-bottom: 0.5rem;
 }
 
@@ -682,7 +682,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .product-rate-review .reviews .comments-pagination {
-	padding: 2rem 0 0;
+	padding: 2rem 0 1rem;
 }
 
 .product-rate-review .reviews .comments-pagination .pagination {
@@ -692,11 +692,16 @@ input[type="number"]::-webkit-outer-spin-button {
 .product-rate-review .reviews .comments-pagination .pagination .page-link {
 	padding: 0.75rem 1rem;
 	border-radius: 0%;
-	background-color: #EFF0F5;
-	color: #98989A;
+	background-color: #eff0f5;
+	color: #98989a;
 }
 
-.product-rate-review .reviews .comments-pagination .pagination .page-item.active > .page-link {
-	background-color: #1A9CB7;
-	color: #fff;
+.product-rate-review
+	.reviews
+	.comments-pagination
+	.pagination
+	.page-item.active
+	> .page-link {
+	background-color: #1a9cb7 !important;
+	color: #fff !important;
 }
