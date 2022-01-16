@@ -1,13 +1,17 @@
-<div class="container">
-	<nav
-		id="breadcrumb"
-		aria-label="breadcrumb"
-	>
+<nav id="breadcrumb" aria-label="breadcrumb" class="navbar">
+	<div class="container-fluid">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a [routerLink]="['/']" routerLinkActive="router-link-active" >Home</a></li>
+			<li class="breadcrumb-item">
+				<a [routerLink]="['/']" routerLinkActive="router-link-active"
+					>Home</a
+				>
+			</li>
 			<li class="breadcrumb-item active" aria-current="page">Products</li>
 		</ol>
-	</nav>
-
-	<router-outlet></router-outlet>
+	</div>
+</nav>
+<div class="main navbar">
+	<div class="container-fluid">
+		<router-outlet></router-outlet>
+	</div>
 </div>
