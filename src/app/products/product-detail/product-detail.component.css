@@ -425,22 +425,26 @@ input[type="number"]::-webkit-outer-spin-button {
 	font-size: 15px;
 }
 
-.product-details {
+.product-details,
+.product-rate-review {
 	margin-top: 1rem;
 }
 
-.product-details .header {
+.product-details .header,
+.product-rate-review .header {
 	background-color: #fafafa;
 	padding: 0.5rem;
 }
 
-.product-details .header h5 {
+.product-details .header h5,
+.product-rate-review .header h5 {
 	font-size: 18px;
 	font-weight: 600;
 	color: #212121;
 }
 
-.product-details .details .header h5 {
+.product-details .details .header h5,
+.product-rate-review .rate-review .header h5 {
 	letter-spacing: 0;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -488,17 +492,18 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .product-details .details .show-more {
 	text-align: center;
+	margin-bottom: 1rem;
 }
 
 .product-details .details .show-more > button {
 	background-color: transparent;
-	color: #1A9CB7;
-	border: 1px solid #1A9CB7;
+	color: #1a9cb7;
+	border: 1px solid #1a9cb7;
 	border-radius: 0;
 }
 
 .product-details .details .show-more > button:hover {
-	background-color: #1A9CB7;
+	background-color: #1a9cb7;
 	color: #fff;
 }
 
@@ -507,15 +512,191 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .product-details .specifications .spec {
-    margin-bottom: 0.75rem;
+	margin-bottom: 0.75rem;
 }
 
 .product-details .specifications .spec .title {
-    color: #757575;
+	color: #757575;
 }
 
 .product-details .specifications .spec .title,
 .product-details .specifications .spec .value {
-    word-break: break-word;
-    font-size: 16px;
+	word-break: break-word;
+	font-size: 16px;
+}
+
+.product-rate-review .ratings {
+	padding: 0.5rem;
+}
+
+.product-rate-review .ratings > .row {
+	margin-top: 1rem;
+}
+
+.product-rate-review .ratings .score .earned {
+	font-size: 48px;
+	color: #212121;
+}
+
+.product-rate-review .ratings .score .max {
+	font-size: 32px;
+	color: #9e9e9e;
+	text-align: center;
+	line-height: 40px;
+}
+
+.product-rate-review .ratings .stars .fa-star::before {
+	content: "\f005";
+	font-size: 40px;
+	color: #faca51;
+	margin-right: 0.5rem;
+}
+
+.product-rate-review .ratings .no-of-ratings {
+	margin-top: 9px;
+	color: #757575;
+}
+
+.product-rate-review .ratings .last-five .stars .fa-star::before {
+	content: "\f005";
+	font-size: 24px;
+	color: #faca51;
+}
+
+.product-rate-review .ratings .last-five .prog-bar {
+	height: 1.5rem;
+}
+
+.product-rate-review .ratings .last-five .progress {
+	height: 14px;
+	border-radius: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	position: relative;
+}
+
+.product-rate-review .ratings .last-five .progress .progress-bar {
+	background-color: #faca51;
+}
+
+.product-rate-review .reviews .row {
+	--bs-gutter-x: 0;
+}
+
+.product-rate-review .reviews .header {
+	background-color: #fff;
+	font-size: 18px;
+	padding: 0%;
+}
+
+.product-rate-review .reviews .header .sort-filter .title,
+.product-rate-review .reviews .header .sort-filter i {
+	color: #757575;
+}
+.product-rate-review .reviews .header .sort-filter .title {
+	margin-left: 0.5rem;
+}
+
+.product-rate-review .reviews .header .row > div {
+	border: 1px solid #ccc;
+	padding: 0.75rem 0.5rem;
+}
+
+.product-rate-review .reviews .header .row > div:first-child {
+	border-left: none;
+	padding-left: 0;
+}
+
+.product-rate-review .reviews .header .row > div:last-child {
+	border-right: none;
+}
+
+.product-rate-review .reviews .comments {
+	padding: 1rem 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.product-rate-review .reviews .comments .stars .fa-star::before {
+	content: "\f005";
+	font-size: 1rem;
+	color: #faca51;
+	margin-right: 0.25rem;
+}
+
+.product-rate-review .reviews .comments .by-user .user {
+	color: #808080;
+}
+
+.product-rate-review .reviews .comments .by-user .verified-purchase {
+	color: #4CAF50;
+}
+
+.product-rate-review .reviews .comments .comment {
+	margin: 1rem 0;
+}
+
+.product-rate-review .reviews .comments .images img {
+	width: 18%;
+	margin-right: 2%;
+	margin-bottom: 2%;
+}
+
+.product-rate-review .reviews .comments .prod-features,
+.product-rate-review .reviews .comments .likes,
+.product-rate-review .reviews .comments .reply .likes {
+	color: #757575;
+}
+
+.product-rate-review .reviews .comments .commented-on {
+	text-align: end;
+	color: #757575;
+}
+
+.product-rate-review .reviews .comments .likes {
+	margin-top: 0.5rem;
+	font-size: 18px;
+}
+
+.product-rate-review .reviews .comments .reply {
+	background-color: #F8F8F8;
+	padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+	margin-top: 1rem;
+}
+
+.product-rate-review .reviews .comments .reply .info {
+	color: #FF330C;
+	margin-bottom: 0.5rem;
+}
+
+.product-rate-review .reviews .comments .reply .comment {
+	margin: 0;
+}
+
+.product-rate-review .reviews .comments .reply .likes,
+.product-rate-review .reviews .comments .reply .likes .col-4 {
+	padding-right: 0;
+}
+
+.product-rate-review .reviews .likes .fa-thumbs-up {
+	margin-right: 0.5rem;
+}
+
+.product-rate-review .reviews .comments-pagination {
+	padding: 2rem 0 0;
+}
+
+.product-rate-review .reviews .comments-pagination .pagination {
+	margin: 0%;
+}
+
+.product-rate-review .reviews .comments-pagination .pagination .page-link {
+	padding: 0.75rem 1rem;
+	border-radius: 0%;
+	background-color: #EFF0F5;
+	color: #98989A;
+}
+
+.product-rate-review .reviews .comments-pagination .pagination .page-item.active > .page-link {
+	background-color: #1A9CB7;
+	color: #fff;
 }
