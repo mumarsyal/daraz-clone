@@ -7,3 +7,14 @@
 .page-section {
 	margin-bottom: 1.5rem;
 }
+
+.main.container-fluid {
+	padding: 0 5rem;
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 991px) {
+	.main.container-fluid {
+		padding: 0 2rem;
+	}
+}

@@ -1,11 +1,11 @@
 .navbar .container-fluid {
-	margin: 0 5rem;
+	margin: 0 5rem 1.5rem;
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (max-width: 991px) {
 	.navbar .container-fluid {
-		margin: 0 1rem;
+		margin: 0 1rem 1.5rem;
 	}
 }
 
@@ -34,6 +34,6 @@ nav#breadcrumb .breadcrumb a {
 }
 
 .main.navbar .container-fluid {
-	padding: 2rem;
+	padding: 2rem 2rem 0;
 	background-color: #fff;
 }
