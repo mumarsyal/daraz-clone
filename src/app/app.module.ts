@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,6 +20,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductsListComponent } from './products/products-list/products-list.component';
 import { ProductItemComponent } from './products/product-item/product-item.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
 	declarations: [
@@ -33,12 +36,19 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 		SiteMapComponent,
 		FindUsComponent,
 		HomePageComponent,
-  ProductsComponent,
-  ProductsListComponent,
-  ProductItemComponent,
-  ProductDetailComponent,
+		ProductsComponent,
+		ProductsListComponent,
+		ProductItemComponent,
+		ProductDetailComponent,
+		SignupComponent,
 	],
-	imports: [BrowserModule, AppRoutingModule],
+	imports: [
+		BrowserModule,
+		FormsModule,
+		ReactiveFormsModule,
+		HttpClientModule,
+		AppRoutingModule,
+	],
 	providers: [],
 	bootstrap: [AppComponent],
 })
