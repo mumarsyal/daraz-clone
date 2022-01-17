@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Route, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
+import { LoggedInAuthGuard } from './auth/logged-in-auth.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { ProductsListComponent } from './products/products-list/products-list.component';
@@ -18,8 +19,8 @@ const routes: Routes = [
 			{ path: 'detail', component: ProductDetailComponent },
 		],
 	},
-	{ path: 'signup', component: SignupComponent },
-	{ path: 'login', component: LoginComponent },
+	{ path: 'signup', component: SignupComponent, canActivate: [LoggedInAuthGuard] },
+	{ path: 'login', component: LoginComponent, canActivate: [LoggedInAuthGuard] },
 
 	{ path: '**', redirectTo: '' },
 ];
@@ -27,5 +28,6 @@ const routes: Routes = [
 @NgModule({
 	imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule],
+	providers: [LoggedInAuthGuard],
 })
 export class AppRoutingModule {}
