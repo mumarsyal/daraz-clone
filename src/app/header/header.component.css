@@ -12,6 +12,7 @@
 	color: #000;
 	text-transform: uppercase;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .navbar-grey nav .text-sm-center.active {

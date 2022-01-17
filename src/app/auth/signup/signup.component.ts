@@ -36,8 +36,12 @@ export class SignupComponent implements OnInit {
 			.subscribe(
 				(success) => {
 					console.log(success);
-					this.signupForm.reset();
 					this.signupSuccessful = success['message'];
+					this.authService.login(
+						this.signupForm.value.email,
+						this.signupForm.value.password
+					);
+					this.signupForm.reset();
 				},
 				(error) => {
 					if (error.error.errorField === 'Email') {

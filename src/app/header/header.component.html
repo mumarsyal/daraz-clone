@@ -10,9 +10,12 @@
 			<a class="flex-sm-fill text-sm-center" href="">Sell on Daraz</a>
 			<a class="flex-sm-fill text-sm-center" href="">Customer Care</a>
 			<a class="flex-sm-fill text-sm-center" href="">Track my order</a>
-			<a class="flex-sm-fill text-sm-center" href="">login</a>
-			<a class="flex-sm-fill text-sm-center" [routerLink]="['/signup']">
+			<a class="flex-sm-fill text-sm-center" [routerLink]="['/login']" *ngIf="!userIsAuthenticated">login</a>
+			<a class="flex-sm-fill text-sm-center" [routerLink]="['/signup']" *ngIf="!userIsAuthenticated">
 				signup
+			</a>
+			<a class="flex-sm-fill text-sm-center" *ngIf="userIsAuthenticated" (click)="onLogout()">
+				logout
 			</a>
 			<a class="flex-sm-fill text-sm-center" href="">زبان تبدیل کریں</a>
 		</nav>
