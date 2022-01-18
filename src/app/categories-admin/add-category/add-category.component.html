@@ -1,0 +1,77 @@
+<div class="container-fluid">
+	<form
+		class="category-form"
+		method="post"
+		[formGroup]="categoryForm"
+		(submit)="onAddCategory()"
+	>
+		<div class="form-group">
+			<label for="titleField">Title: </label>
+			<input
+				class="form-control"
+				type="text"
+				name="titleField"
+				id="titleField"
+				placeholder="Category Title"
+				formControlName="category"
+			/>
+			<!-- <small id="categoryHelp" class="form-text text-muted">
+				Email should be in the format of: 'a@a.aa'
+			</small>
+			<small
+				class="invalid-feedback"
+				*ngIf="
+					signupForm.get('email').hasError('server-error') &&
+					signupForm.get('email').invalid
+				"
+				>{{ signupForm.get("email").errors["server-error"] }}</small
+			> -->
+		</div>
+		<div class="form-group">
+			<button
+				type="button"
+				class="btn btn-primary"
+				(click)="imagePicker.click()"
+			>
+				SELECT IMAGE
+			</button>
+			<input
+				type="file"
+				#imagePicker
+				(change)="onImageSelected($event)"
+			/>
+			<small id="categoryImageHelp" class="form-text text-muted" [ngClass]="{'invalid-feedback': imagePicker.hasError('invalidMimeType')}">
+				Supported formats (.png, .jpg & .jpeg)
+			</small>
+
+			<div
+				class="image-preview"
+				*ngIf="
+					imagePreview &&
+					imagePreview !== '' &&
+					categoryForm.get('image').valid
+				"
+			>
+				<img [src]="imagePreview" [alt]="categoryForm.title" />
+			</div>
+		</div>
+		<!-- <small
+			class="invalid-feedback invalid-feedback-form"
+			*ngIf="signupForm.hasError('server-error') && signupForm.invalid"
+			>{{ signupForm.errors["server-error"] }}</small
+		> -->
+		<button
+			type="submit"
+			class="btn btn-primary"
+			[disabled]="categoryForm.invalid"
+		>
+			Add Category
+		</button>
+		<!-- <small
+			class="valid-feedback valid-feedback-form"
+			*ngIf="signupSuccessful !== null"
+		>
+			{{ signupSuccessful }}
+		</small> -->
+	</form>
+</div>

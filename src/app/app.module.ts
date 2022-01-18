@@ -22,6 +22,8 @@ import { ProductItemComponent } from './products/product-item/product-item.compo
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
+import { CategoriesAdminComponent } from './categories-admin/categories-admin.component';
+import { AddCategoryComponent } from './categories-admin/add-category/add-category.component';
 
 @NgModule({
 	declarations: [
@@ -42,7 +44,9 @@ import { LoginComponent } from './auth/login/login.component';
 		ProductItemComponent,
 		ProductDetailComponent,
 		SignupComponent,
-		LoginComponent
+		LoginComponent,
+		CategoriesAdminComponent,
+  AddCategoryComponent,
 	],
 	imports: [
 		BrowserModule,
