@@ -10,7 +10,7 @@ import { FranchisesComponent } from './home-page/franchises/franchises.component
 import { FlashSaleComponent } from './home-page/flash-sale/flash-sale.component';
 import { CollectionsComponent } from './home-page/collections/collections.component';
 import { MallComponent } from './home-page/mall/mall.component';
-import { CategoriesComponent } from './home-page/categories/categories.component';
+import { CategoriesComponent } from './categories/categories.component';
 import { ForYouComponent } from './home-page/for-you/for-you.component';
 import { SiteMapComponent } from './site-map/site-map.component';
 import { FindUsComponent } from './find-us/find-us.component';
@@ -22,8 +22,9 @@ import { ProductItemComponent } from './products/product-item/product-item.compo
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
-import { CategoriesAdminComponent } from './categories-admin/categories-admin.component';
-import { AddCategoryComponent } from './categories-admin/add-category/add-category.component';
+import { AddCategoryComponent } from './categories/add-category/add-category.component';
+import { CategoryItemComponent } from './categories/category-item/category-item.component';
+import { CategoryListComponent } from './categories/category-list/category-list.component';
 
 @NgModule({
 	declarations: [
@@ -45,8 +46,9 @@ import { AddCategoryComponent } from './categories-admin/add-category/add-catego
 		ProductDetailComponent,
 		SignupComponent,
 		LoginComponent,
-		CategoriesAdminComponent,
-  AddCategoryComponent,
+		AddCategoryComponent,
+		CategoryItemComponent,
+		CategoryListComponent,
 	],
 	imports: [
 		BrowserModule,

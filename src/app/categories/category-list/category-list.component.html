@@ -1,0 +1,26 @@
+<a
+	class="btn btn-primary btn-lg"
+	*ngIf="userIsAuthenticated && activeRoute === '/categories'"
+	[routerLink]="['/categories/new']"
+	routerLinkActive="router-link-active"
+	>Add New Category</a
+>
+
+<div class="section-header">
+	<h3 class="section-title">Categories</h3>
+	<a
+		class="pull-right"
+		*ngIf="activeRoute === '/'"
+		[routerLink]="['/categories']"
+	>
+		See All
+		<i class="fa fa-chevron-right"></i>
+	</a>
+</div>
+
+<div class="row categories">
+	<app-category-item
+		*ngFor="let category of categories"
+		[category]="category"
+	></app-category-item>
+</div>

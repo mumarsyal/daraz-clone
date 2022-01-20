@@ -1,6 +1,6 @@
 .section-title {
 	color: #757575;
-	margin-left: -0.8rem;
+	/* margin-left: -0.8rem; */
 }
 
 .card {
@@ -151,4 +151,9 @@
 	color: #000;
 	font-size: 12px;
 	line-height: 12px;
+}
+
+.row {
+	margin-right: 0%;
+	margin-left: 0%;
 }

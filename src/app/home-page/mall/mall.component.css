@@ -2,7 +2,7 @@
 	color: #424242;
 	display: inline-block;
 	font-size: 1.5rem;
-	margin-left: -0.8rem;
+	/* margin-left: -0.8rem; */
 }
 
 .section-header a {
@@ -69,7 +69,7 @@
 	}
 }
 
-@media (min-width: 768px ) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 991px) {
 	.mall-card .preview-overlay {
 		top: 60%;
 	}
@@ -105,4 +105,9 @@
 
 .mall-card .card-body {
 	padding: 0 1rem;
+}
+
+.row {
+	margin-right: 0%;
+	margin-left: 0%;
 }
