@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -25,6 +25,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import { CategoryItemComponent } from './categories/category-item/category-item.component';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
 	declarations: [
@@ -57,7 +58,9 @@ import { CategoryListComponent } from './categories/category-list/category-list.
 		HttpClientModule,
 		AppRoutingModule,
 	],
-	providers: [],
+	providers: [
+		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+	],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}
