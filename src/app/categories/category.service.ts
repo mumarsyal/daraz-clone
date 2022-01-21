@@ -15,7 +15,7 @@ export class CategoryService {
 	addCategory(category: Category) {
 		const categoryData = new FormData();
 		categoryData.append('title', category.title);
-		categoryData.append('image', category.image, category.title);
+		categoryData.append('images', category.image, category.title);
 		return this.http.post<{ message: string }>(
 			`${this.categoriesApiUrlPrefix}`,
 			categoryData
