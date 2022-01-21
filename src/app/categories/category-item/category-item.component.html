@@ -1,4 +1,11 @@
 <div class="card categories-card">
+	<small
+		class="btn btn-danger btn-sm"
+		*ngIf="userIsAuthenticated && activeRoute === '/categories'"
+		(click)="onDeleteCategory(category._id)"
+	>
+		X
+	</small>
 	<a href="">
 		<img [src]="category.imagePath" class="card-img-top" alt="study-exam" />
 		<div class="card-body">

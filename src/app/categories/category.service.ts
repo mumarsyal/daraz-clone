@@ -31,4 +31,8 @@ export class CategoryService {
 			totalCategories: number;
 		}>(`${this.categoriesApiUrlPrefix}` + queryParams);
 	}
+
+	deleteCategory(categoryId: string) {
+		return this.http.delete(`${this.categoriesApiUrlPrefix}` + categoryId);
+	}
 }

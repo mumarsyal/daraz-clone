@@ -21,7 +21,11 @@ export class CategoryListComponent implements OnInit, OnDestroy {
 		private categoryService: CategoryService,
 		private authService: AuthService,
 		private router: Router
-	) {}
+	) {
+		this.router.routeReuseStrategy.shouldReuseRoute = () => {
+			return false;
+		};
+	}
 
 	ngOnInit(): void {
 		this.activeRoute = this.router.url;

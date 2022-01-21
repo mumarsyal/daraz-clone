@@ -29,10 +29,6 @@ app-category-item {
 	border-radius: 0%;
 }
 
-app-category-item:hover {
-	box-shadow: -2px -2px 4px 0 rgba(0, 0, 0, 0.25);
-}
-
 @media (max-width: 575px) {
 	app-category-item {
 		width: 50%;

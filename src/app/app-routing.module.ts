@@ -50,7 +50,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
+	imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
 	exports: [RouterModule],
 	providers: [LoggedInAuthGuard, LoggedOutAuthGuard],
 })
