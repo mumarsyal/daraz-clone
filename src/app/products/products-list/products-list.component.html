@@ -25,12 +25,7 @@
 				<span>Cash on Delivery</span>
 			</label>
 			<label for="byDaraz">
-				<input
-					type="checkbox"
-					name="byDaraz"
-					id="byDaraz"
-					value="byDaraz"
-				/>
+				<input type="checkbox" name="byDaraz" id="byDaraz" value="byDaraz" />
 				<span>Fulfilled by Daraz</span>
 			</label>
 		</div>
@@ -50,9 +45,7 @@
 
 <main>
 	<div class="info-controls">
-		<div class="info no-of-items">
-			43058 items found for "caps for boys"
-		</div>
+		<div class="info no-of-items">{{ totalProducts }} items found</div>
 		<div class="controls pull-right">
 			<div class="sort-by me-2">
 				<label for="sort-by">Sort By: </label>
@@ -71,35 +64,8 @@
 	</div>
 
 	<div class="row">
-		<div class="col-sm-6 col-md-4 col-lg-3">
-			<app-product-item></app-product-item>
-		</div>
-		<div class="col-sm-6 col-md-4 col-lg-3">
-			<app-product-item></app-product-item>
-		</div>
-		<div class="col-sm-6 col-md-4 col-lg-3">
-			<app-product-item></app-product-item>
-		</div>
-		<div class="col-sm-6 col-md-4 col-lg-3">
-			<app-product-item></app-product-item>
-		</div>
-		<div class="col-sm-6 col-md-4 col-lg-3">
-			<app-product-item></app-product-item>
-		</div>
-		<div class="col-sm-6 col-md-4 col-lg-3">
-			<app-product-item></app-product-item>
-		</div>
-		<div class="col-sm-6 col-md-4 col-lg-3">
-			<app-product-item></app-product-item>
-		</div>
-		<div class="col-sm-6 col-md-4 col-lg-3">
-			<app-product-item></app-product-item>
-		</div>
-		<div class="col-sm-6 col-md-4 col-lg-3">
-			<app-product-item></app-product-item>
-		</div>
-		<div class="col-sm-6 col-md-4 col-lg-3">
-			<app-product-item></app-product-item>
+		<div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let product of products">
+			<app-product-item [product]="product"></app-product-item>
 		</div>
 	</div>
 </main>

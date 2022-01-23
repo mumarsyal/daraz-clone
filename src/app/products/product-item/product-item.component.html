@@ -1,56 +1,38 @@
 <div class="card product-card">
-	<a [routerLink]="['/products/detail']">
-		<img
-			src="assets/images/products/berets.jpg"
-			class="card-img-top"
-			alt="berets"
-		/>
+	<a [routerLink]="['/products/detail', product._id]">
+		<img [src]="product.thumbnail" class="card-img-top" alt="Thumbnail" />
 		<div class="card-body">
-			<div class="variants">
-				<div>
-					<img src="assets/images/products/berets.jpg" alt="berets" />
-				</div>
-				<div>
-					<img src="assets/images/products/berets.jpg" alt="berets" />
-				</div>
-				<div>
-					<img src="assets/images/products/berets.jpg" alt="berets" />
-				</div>
-				<div>
-					<img src="assets/images/products/berets.jpg" alt="berets" />
-				</div>
-				<div>
-					<img src="assets/images/products/berets.jpg" alt="berets" />
+			<div class="variants" *ngIf="product.images.length > 0">
+				<div *ngFor="let image of product.images; let i = index">
+					<img [src]="image" alt="{{ variant + i }}" />
 				</div>
 			</div>
 			<div class="card-title offer-by">
-				<img
-					src="assets/images/products/daraz-mall.png"
-					alt="daraz-mall"
-				/>
+				<img src="assets/images/products/daraz-mall.png" alt="daraz-mall" />
 			</div>
 			<div class="card-text">
-				LouisWill Men Berets Hats Women Berets Caps Outdoor Sunscreen
-				Cap Fashion Retro Lattice Golf Flat Caps Casual Hats Unisex Hip
-				Hop Berets Cotton Hats for Men Women
+				{{ product.title }}
 			</div>
 			<div class="price">
 				<span class="currency">Rs.</span>
 				<span class="price">
-					{{ 1099 | number: "":"en-US" }}
+					{{ product.currentPrice | number: "":"en-US" }}
 				</span>
 			</div>
 			<div class="original-price">
-				<div class="price-was">
+				<div class="price-was" *ngIf="product.oldPrice > 0">
 					<span class="currency">Rs.</span>
 					<span class="original-price">
-						{{ 1659 | number: "":"en-US" }}
+						{{ product.oldPrice | number: "":"en-US" }}
 					</span>
 				</div>
-				<div class="discount">
-					-{{ ((1659 - 1099) / 1659) * 100 | number: "1.0-0" }}%
+				<div class="discount" *ngIf="product.oldPrice > 0">
+					-{{
+						((product.oldPrice - product.currentPrice) / product.oldPrice) * 100
+							| number: "1.0-0"
+					}}%
 				</div>
-				<div class="free-shipping">
+				<div class="free-shipping" *ngIf="product.freeShipping">
 					<img
 						src="assets/images/products/free-shipping.png"
 						alt="free-shipping"
@@ -65,7 +47,7 @@
 					<i class="fa fa-star"></i>
 					<i class="fa fa-star"></i>
 				</div>
-				<div class="reviews">(51)</div>
+				<div class="reviews">({{ product.noOfRatings }})</div>
 			</div>
 		</div>
 	</a>
