@@ -12,14 +12,15 @@ export class ProductService {
 
 	constructor(private http: HttpClient) {}
 
-	getProducts(limit?: number) {
-		const queryParams = `?limit=${limit}`;
-
+	getProducts(queryParams?: {}) {
 		return this.http.get<{
 			message: string;
 			products: Product[];
 			totalProducts: number;
-		}>(`${this.productsApiUrlPrefix}` + queryParams);
+			fetchedProducts: number;
+		}>(`${this.productsApiUrlPrefix}`, {
+			params: queryParams,
+		});
 	}
 
 	getProduct(id: string) {

@@ -18,7 +18,29 @@ export interface Product {
 	model: string;
 	material: string;
 	inTheBox: [string];
-	category: string;
-	seller: string;
-	reviews?: [string];
+	category: {
+		_id?: string;
+		title: string;
+		imagePath: string;
+		products?: Product[];
+	};
+	seller: {
+		_id?: string;
+		name: string;
+		positiveRatings: number;
+		shipOnTime: number;
+		chatResponse: number;
+		products?: Product[];
+	};
+	reviews?: [
+		{
+			_id?: string;
+			reviewBy: string;
+			rating?: number;
+			verifiedPurchase?: boolean;
+			reviewDate?: Date;
+			comment: string;
+			product: Product;
+		}
+	];
 }

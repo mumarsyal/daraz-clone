@@ -17,6 +17,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 	billToPay: number;
 	paramSub: Subscription;
 	product: Product;
+	productsFromSameSeller: Product[];
 
 	constructor(
 		private productService: ProductService,
@@ -31,6 +32,18 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 				this.billToPay = this.product.currentPrice * 1;
 				this.loading = false;
 				this.loadingFromSameSeller = true;
+				this.productService
+					.getProducts({ seller: this.product.seller._id })
+					.subscribe((data) => {
+						this.productsFromSameSeller = data.products;
+						const curProductIndex = this.productsFromSameSeller.findIndex(
+							(prod) => prod._id === this.product._id
+						);
+						if (curProductIndex > -1) {
+							this.productsFromSameSeller.splice(curProductIndex, 1);
+						}
+						this.loadingFromSameSeller = false;
+					});
 			});
 		});
 	}

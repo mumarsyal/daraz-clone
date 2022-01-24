@@ -428,9 +428,15 @@
 					<span class="sr-only">Loading...</span>
 				</div>
 			</div>
-			<div *ngIf="!loadingFromSameSeller">
-				<app-product-item [product]="product"></app-product-item>
+			<div *ngIf="!loadingFromSameSeller && productsFromSameSeller.length > 0">
+				<app-product-item
+					*ngFor="let prod of productsFromSameSeller"
+					[product]="prod"
+				></app-product-item>
 			</div>
+			<p *ngIf="!loadingFromSameSeller && productsFromSameSeller.length <= 0">
+				No more products from this store!
+			</p>
 		</div>
 	</div>
 </div>
