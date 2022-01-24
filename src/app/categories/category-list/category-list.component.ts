@@ -12,6 +12,7 @@ import { CategoryService } from '../category.service';
 	styleUrls: ['./category-list.component.css'],
 })
 export class CategoryListComponent implements OnInit, OnDestroy {
+	loading: boolean = false;
 	userIsAuthenticated: boolean = false;
 	activeRoute: string = null;
 	private authStatusSub: Subscription;
@@ -28,11 +29,13 @@ export class CategoryListComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
+		this.loading = true;
 		this.activeRoute = this.router.url;
 		const limitCategoriesTo = this.activeRoute === '/' ? 16 : undefined;
 
 		this.categoryService.getCategories(limitCategoriesTo).subscribe((data) => {
 			this.categories = data.categories;
+			this.loading = false;
 		});
 		this.authStatusSub = this.authService
 			.getAuthStatusListener()

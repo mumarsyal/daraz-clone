@@ -1,3 +1,8 @@
+.d-flex.justify-content-center > .spinner-grow {
+	width: 5rem;
+	height: 5rem;
+}
+
 .btn.btn-primary.btn-lg {
 	margin-bottom: 1rem;
 }

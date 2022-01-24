@@ -1,12 +1,18 @@
+<div class="d-flex justify-content-center" *ngIf="loading">
+	<div class="spinner-grow text-primary" role="status">
+		<span class="sr-only">Loading...</span>
+	</div>
+</div>
+
 <a
 	class="btn btn-primary btn-lg"
-	*ngIf="userIsAuthenticated && activeRoute === '/categories'"
+	*ngIf="userIsAuthenticated && activeRoute === '/categories' && !loading"
 	[routerLink]="['/categories/new']"
 	routerLinkActive="router-link-active"
 	>Add New Category</a
 >
 
-<div class="section-header">
+<div class="section-header" *ngIf="!loading">
 	<h3 class="section-title">Categories</h3>
 	<a
 		class="pull-right"
@@ -18,7 +24,7 @@
 	</a>
 </div>
 
-<div class="row categories">
+<div class="row categories" *ngIf="!loading">
 	<app-category-item
 		*ngFor="let category of categories"
 		[category]="category"

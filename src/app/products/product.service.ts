@@ -21,4 +21,11 @@ export class ProductService {
 			totalProducts: number;
 		}>(`${this.productsApiUrlPrefix}` + queryParams);
 	}
+
+	getProduct(id: string) {
+		return this.http.get<{
+			message: string;
+			product: Product;
+		}>(`${this.productsApiUrlPrefix}` + id);
+	}
 }
