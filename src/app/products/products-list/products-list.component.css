@@ -18,6 +18,11 @@ aside {
 aside .filter-type {
 	font-size: 14px;
 	color: #212121;
+	padding-top: 0.5rem;
+}
+
+aside .brand > .filter-type {
+	padding-top: 0%;
 }
 
 aside .filter-options {
@@ -40,6 +45,11 @@ aside .filter-options a {
 
 aside .filter-options label {
 	display: block;
+}
+
+aside .filter-options label,
+aside .filter-options input[type="checkbox"] {
+	cursor: pointer;
 }
 
 aside .filter-options input {

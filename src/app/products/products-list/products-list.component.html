@@ -5,48 +5,73 @@
 </div>
 
 <aside *ngIf="!loading">
-	<div class="related">
-		<div class="filter-type">Related Categories</div>
-		<div class="filter-options">
-			<a href="">Men's Hats & Caps</a>
-			<a href="">Boys' Hats & Caps</a>
-			<a href="">Unisex's Hats & Caps</a>
-			<a href="">Caps & Hats</a>
+	<form>
+		<div class="brand">
+			<div class="filter-type">Brands</div>
+			<div class="filter-options">
+				<label
+					[for]="'brand' + i"
+					*ngFor="let brand of brands; let i = index"
+					(click)="filterProducts({ brand: brand })"
+				>
+					<input
+						type="checkbox"
+						[id]="'brand' + i"
+						[name]="'Brand'"
+						[value]="brand"
+					/>
+					<span>{{ brand || "No Brand" }}</span>
+				</label>
+			</div>
 		</div>
-	</div>
-	<div class="service">
-		<div class="filter-type">Service</div>
-		<div class="filter-options">
-			<label for="installment">
-				<input
-					type="checkbox"
-					name="installment"
-					id="installment"
-					value="installment"
-				/>
-				<span>Installment</span>
-			</label>
-			<label for="cod">
-				<input type="checkbox" name="cod" id="cod" value="cod" />
-				<span>Cash on Delivery</span>
-			</label>
-			<label for="byDaraz">
-				<input type="checkbox" name="byDaraz" id="byDaraz" value="byDaraz" />
-				<span>Fulfilled by Daraz</span>
-			</label>
+		<div class="sellers">
+			<div class="filter-type">Sellers</div>
+			<div class="filter-options">
+				<label
+					[for]="'seller' + i"
+					*ngFor="let seller of sellers; let i = index"
+					(click)="filterProducts({ seller: seller._id })"
+				>
+					<input
+						type="checkbox"
+						[name]="'Seller_' + i"
+						[id]="'seller' + i"
+						[value]="seller._id"
+					/>
+					<span>{{ seller.name }}</span>
+				</label>
+			</div>
 		</div>
-	</div>
-	<div class="price">
-		<div class="filter-type">Price</div>
-		<div class="filter-options">
-			<input type="text" placeholder="Min" />
-			<span> - </span>
-			<input type="text" placeholder="Max" />
-			<button class="btn btn-warning">
-				<i class="fa fa-play"></i>
-			</button>
+		<div class="categories">
+			<div class="filter-type">Categories</div>
+			<div class="filter-options">
+				<label
+					[for]="'category' + i"
+					(click)="filterProducts({ category: category._id })"
+					*ngFor="let category of categories; let i = index"
+				>
+					<input
+						type="checkbox"
+						[name]="'Category_' + i"
+						[id]="'category' + i"
+						[value]="category._id"
+					/>
+					<span>{{ category.title }}</span>
+				</label>
+			</div>
 		</div>
-	</div>
+		<div class="price">
+			<div class="filter-type">Price</div>
+			<div class="filter-options">
+				<input type="text" placeholder="Min" />
+				<span> - </span>
+				<input type="text" placeholder="Max" />
+				<button class="btn btn-warning">
+					<i class="fa fa-play"></i>
+				</button>
+			</div>
+		</div>
+	</form>
 </aside>
 
 <main *ngIf="!loading">

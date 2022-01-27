@@ -1,3 +1,6 @@
+import { Category } from '../categories/category.model';
+import { Seller } from '../shared/seller.model';
+
 export interface Product {
 	_id?: string;
 	title: string;
@@ -18,20 +21,8 @@ export interface Product {
 	model: string;
 	material: string;
 	inTheBox: [string];
-	category: {
-		_id?: string;
-		title: string;
-		imagePath: string;
-		products?: Product[];
-	};
-	seller: {
-		_id?: string;
-		name: string;
-		positiveRatings: number;
-		shipOnTime: number;
-		chatResponse: number;
-		products?: Product[];
-	};
+	category: Category;
+	seller: Seller;
 	reviews?: [
 		{
 			_id?: string;
