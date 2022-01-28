@@ -5,49 +5,60 @@
 </div>
 
 <aside *ngIf="!loading">
-	<form>
-		<div class="brand">
+	<div
+		class="d-flex justify-content-center"
+		*ngIf="loadingBrands || loadingSellers || loadingCategories"
+	>
+		<div class="spinner-grow text-primary" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+	</div>
+
+	<div *ngIf="!loadingBrands && !loadingSellers && !loadingCategories">
+		<div class="brand" *ngIf="brands.length > 0">
 			<div class="filter-type">Brands</div>
 			<div class="filter-options">
 				<label
 					[for]="'brand' + i"
 					*ngFor="let brand of brands; let i = index"
-					(click)="filterProducts({ brand: brand })"
+					(click)="filterProducts('brand', brand)"
 				>
 					<input
 						type="checkbox"
 						[id]="'brand' + i"
 						[name]="'Brand'"
 						[value]="brand"
+						[checked]="filtersApplied.brand.includes(brand)"
 					/>
-					<span>{{ brand || "No Brand" }}</span>
+					<span>{{ brand }}</span>
 				</label>
 			</div>
 		</div>
-		<div class="sellers">
+		<div class="sellers" *ngIf="sellers.length > 0">
 			<div class="filter-type">Sellers</div>
 			<div class="filter-options">
 				<label
 					[for]="'seller' + i"
 					*ngFor="let seller of sellers; let i = index"
-					(click)="filterProducts({ seller: seller._id })"
+					(click)="filterProducts('seller', seller._id)"
 				>
 					<input
 						type="checkbox"
 						[name]="'Seller_' + i"
 						[id]="'seller' + i"
 						[value]="seller._id"
+						[checked]="filtersApplied.seller.includes(seller._id)"
 					/>
 					<span>{{ seller.name }}</span>
 				</label>
 			</div>
 		</div>
-		<div class="categories">
+		<div class="categories" *ngIf="categories.length > 0">
 			<div class="filter-type">Categories</div>
 			<div class="filter-options">
 				<label
 					[for]="'category' + i"
-					(click)="filterProducts({ category: category._id })"
+					(click)="filterProducts('category', category._id)"
 					*ngFor="let category of categories; let i = index"
 				>
 					<input
@@ -55,6 +66,7 @@
 						[name]="'Category_' + i"
 						[id]="'category' + i"
 						[value]="category._id"
+						[checked]="filtersApplied.category.includes(category._id)"
 					/>
 					<span>{{ category.title }}</span>
 				</label>
@@ -71,12 +83,12 @@
 				</button>
 			</div>
 		</div>
-	</form>
+	</div>
 </aside>
 
 <main *ngIf="!loading">
 	<div class="info-controls">
-		<div class="info no-of-items">{{ totalProducts }} items found</div>
+		<div class="info no-of-items">{{ fetchedProducts }} items found</div>
 		<div class="controls pull-right">
 			<div class="sort-by me-2">
 				<label for="sort-by">Sort By: </label>
@@ -94,9 +106,11 @@
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row" *ngIf="fetchedProducts > 0">
 		<div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let product of products">
 			<app-product-item [product]="product"></app-product-item>
 		</div>
 	</div>
+
+	<div class="row" *ngIf="fetchedProducts <= 0">No items found!</div>
 </main>

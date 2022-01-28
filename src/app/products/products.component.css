@@ -33,4 +33,5 @@ nav#breadcrumb .breadcrumb a {
 	padding: 2rem 2rem 0;
 	background-color: #fff;
 	margin-bottom: 1.5rem;
+	overflow: auto;
 }
