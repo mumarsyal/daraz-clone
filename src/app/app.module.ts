@@ -26,6 +26,7 @@ import { AddCategoryComponent } from './categories/add-category/add-category.com
 import { CategoryItemComponent } from './categories/category-item/category-item.component';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { AddProductComponent } from './products/add-product/add-product.component';
 
 @NgModule({
 	declarations: [
@@ -50,6 +51,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 		AddCategoryComponent,
 		CategoryItemComponent,
 		CategoryListComponent,
+		AddProductComponent,
 	],
 	imports: [
 		BrowserModule,

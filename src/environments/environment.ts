@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrlPrefix: 'http://127.0.0.1:9000/api/'
+  apiUrlPrefix: 'http://127.0.0.1:9000/api/',
+	maxFilesAllowedToUpload: 10,
 };
 
 /*

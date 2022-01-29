@@ -13,6 +13,23 @@ export class ProductService {
 
 	constructor(private http: HttpClient) {}
 
+	addProduct(product: Product) {
+		const productData = new FormData();
+		for (const key in product) {
+			if (Object.prototype.hasOwnProperty.call(product, key) && key !== 'images') {
+				productData.append(key, product[key]);
+			}
+		}
+		for(let i = 0; i < product.images.length; i++){
+			productData.append('images', product.images[i], product.images[i]['name']);
+		}
+
+		return this.http.post<{ message: string; product: Product }>(
+			`${this.productsApiUrlPrefix}`,
+			productData
+		);
+	}
+
 	getProducts(queryParams?: {}) {
 		return this.http.get<{
 			message: string;

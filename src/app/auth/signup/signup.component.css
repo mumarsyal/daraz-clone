@@ -12,6 +12,10 @@
 	margin-bottom: 1rem;
 }
 
+form input.ng-touched.ng-valid {
+	border: 1px solid #28a745;
+}
+
 .signup-form input.ng-touched.ng-invalid {
 	border: 1px solid #dc3545;
 }

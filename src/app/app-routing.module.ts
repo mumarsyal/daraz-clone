@@ -12,17 +12,10 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 import { ProductsListComponent } from './products/products-list/products-list.component';
 import { ProductsComponent } from './products/products.component';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
+import { AddProductComponent } from './products/add-product/add-product.component';
 
 const routes: Routes = [
 	{ path: '', component: HomePageComponent, pathMatch: 'full' },
-	{
-		path: 'products',
-		component: ProductsComponent,
-		children: [
-			{ path: '', component: ProductsListComponent },
-			{ path: 'detail/:id', component: ProductDetailComponent },
-		],
-	},
 	{
 		path: 'signup',
 		component: SignupComponent,
@@ -32,6 +25,19 @@ const routes: Routes = [
 		path: 'login',
 		component: LoginComponent,
 		canActivate: [LoggedInAuthGuard],
+	},
+	{
+		path: 'products',
+		component: ProductsComponent,
+		children: [
+			{ path: '', component: ProductsListComponent },
+			{ path: 'detail/:id', component: ProductDetailComponent },
+			{
+				path: 'new',
+				component: AddProductComponent,
+				canActivate: [LoggedOutAuthGuard],
+			},
+		],
 	},
 	{
 		path: 'categories',

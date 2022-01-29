@@ -16,7 +16,7 @@ export interface Product {
 	colors?: [string];
 	features: [string];
 	description?: string;
-	images: [string];
+	images: [string | File];
 	sku: string;
 	model: string;
 	material: string;
