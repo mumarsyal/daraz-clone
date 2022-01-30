@@ -4,14 +4,6 @@
 	</div>
 </div>
 
-<a
-	class="btn btn-primary btn-lg"
-	*ngIf="userIsAuthenticated && activeRoute === '/categories' && !loading"
-	[routerLink]="['/categories/new']"
-	routerLinkActive="router-link-active"
-	>Add New Category</a
->
-
 <div class="section-header" *ngIf="!loading">
 	<h3 class="section-title">Categories</h3>
 	<a
