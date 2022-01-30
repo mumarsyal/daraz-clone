@@ -1,4 +1,29 @@
 .container-fluid.header {
-    width: 100%;
-    padding: 0;
+	width: 100%;
+	padding: 0;
+	background-color: #fff;
+}
+
+.container-fluid.footer {
+	width: 100%;
+	padding: 0;
+}
+
+.container-fluid.footer .container {
+	padding-top: 22px;
+	padding-bottom: 30px;
+}
+
+@media (min-width: 576px) {
+	.container-fluid.footer .container {
+		padding: 22px 0 30px;
+	}
+}
+
+.container-fluid.footer.site-map {
+	background-color: #2e2e54;
+}
+
+.container-fluid.footer.find-us {
+	background-color: #fff;
 }

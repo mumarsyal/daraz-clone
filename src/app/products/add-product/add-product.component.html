@@ -1,0 +1,367 @@
+<div class="main">
+	<div
+		class="d-flex justify-content-center"
+		*ngIf="loadingCategories || loadingSellers"
+	>
+		<div class="spinner-grow text-primary" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+	</div>
+
+	<form
+		class="product-form"
+		method="post"
+		[formGroup]="productForm"
+		(submit)="onAddProduct()"
+		*ngIf="!loadingCategories && !loadingSellers"
+	>
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label for="titleField">Title</label>
+				<input
+					class="form-control"
+					type="text"
+					name="titleField"
+					id="titleField"
+					placeholder="Title"
+					formControlName="title"
+				/>
+			</div>
+			<div class="form-group col-md-6">
+				<label for="brandField">Brand</label>
+				<input
+					class="form-control"
+					type="text"
+					name="brandField"
+					id="brandField"
+					placeholder="Brand"
+					formControlName="brand"
+				/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label for="priceField">Price</label>
+				<input
+					class="form-control"
+					type="number"
+					min="1"
+					name="priceField"
+					id="priceField"
+					placeholder="Price"
+					formControlName="currentPrice"
+				/>
+			</div>
+			<div class="form-group col-md-6">
+				<label for="oldPriceField">Old Price</label>
+				<input
+					class="form-control"
+					type="number"
+					min="1"
+					name="oldPriceField"
+					id="oldPriceField"
+					placeholder="Old Price"
+					formControlName="oldPrice"
+				/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label for="descriptionField">Description</label>
+				<textarea
+					class="form-control"
+					name="descriptionField"
+					id="descriptionField"
+					placeholder="Description"
+					formControlName="description"
+				></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-4">
+				<label for="skuField">SKU</label>
+				<input
+					class="form-control"
+					type="text"
+					name="skuField"
+					id="skuField"
+					placeholder="SKU"
+					formControlName="sku"
+				/>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="modelField">Model</label>
+				<input
+					class="form-control"
+					type="text"
+					name="modelField"
+					id="modelField"
+					placeholder="Model"
+					formControlName="model"
+				/>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="materialField">Material</label>
+				<input
+					class="form-control"
+					type="text"
+					name="materialField"
+					id="materialField"
+					placeholder="Material"
+					formControlName="material"
+				/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label for="categoryField">Category</label>
+				<select
+					class="form-control"
+					name="categoryField"
+					id="categoryField"
+					formControlName="category"
+				>
+					<option *ngFor="let category of categories" [ngValue]="category._id">
+						{{ category.title }}
+					</option>
+				</select>
+			</div>
+			<div class="form-group col-md-6">
+				<label for="sellerField">Seller</label>
+				<select
+					class="form-control"
+					name="sellerField"
+					id="sellerField"
+					formControlName="seller"
+				>
+					<option *ngFor="let seller of sellers" [ngValue]="seller._id">
+						{{ seller.name }}
+					</option>
+				</select>
+			</div>
+		</div>
+		<div class="row form-arrays">
+			<div class="col-md-4" formArrayName="colors">
+				<div class="row">
+					<div class="col-12">
+						<button
+							class="btn btn-success btn-add-ctrl"
+							type="button"
+							(click)="addNewControlByName('colors')"
+						>
+							Add Color
+						</button>
+					</div>
+				</div>
+				<label for="colorField" *ngIf="getControlsByName('colors').length">
+					Colors
+				</label>
+				<div
+					class="form-group"
+					id="colorField"
+					*ngFor="let colorCtrl of getControlsByName('colors'); let i = index"
+				>
+					<div class="row">
+						<div class="col-10">
+							<input
+								class="form-control"
+								type="text"
+								[name]="'colorField ' + i"
+								[id]="'colorField ' + i"
+								placeholder="Color"
+								[formControlName]="i"
+							/>
+						</div>
+						<div class="col-2">
+							<button
+								class="btn btn-danger btn-rmv-ctrl"
+								type="button"
+								(click)="removeControlByName('colors', i)"
+							>
+								X
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4" formArrayName="features">
+				<div class="row">
+					<div class="col-12">
+						<button
+							class="btn btn-success btn-add-ctrl"
+							type="button"
+							(click)="addNewControlByName('features')"
+						>
+							Add Feature
+						</button>
+					</div>
+				</div>
+				<label for="featuresField" *ngIf="getControlsByName('features').length">
+					Features
+				</label>
+				<div
+					class="form-group"
+					id="featuresField"
+					*ngFor="
+						let featureCtrl of getControlsByName('features');
+						let i = index
+					"
+				>
+					<div class="row">
+						<div class="col-10">
+							<input
+								class="form-control"
+								type="text"
+								[name]="'featureField ' + i"
+								[id]="'featureField ' + i"
+								placeholder="Feature"
+								[formControlName]="i"
+							/>
+						</div>
+						<div class="col-2">
+							<button
+								class="btn btn-danger btn-rmv-ctrl"
+								type="button"
+								(click)="removeControlByName('features', i)"
+							>
+								X
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4" formArrayName="inTheBox">
+				<div class="row">
+					<div class="col-12">
+						<button
+							class="btn btn-success btn-add-ctrl"
+							type="button"
+							(click)="addNewControlByName('inTheBox')"
+						>
+							Add Box Items
+						</button>
+					</div>
+				</div>
+				<label for=""></label>
+				<label for="inTheBoxField" *ngIf="getControlsByName('inTheBox').length">
+					In The Box
+				</label>
+				<div
+					class="form-group"
+					id="inTheBoxField"
+					*ngFor="
+						let inTheBoxCtrl of getControlsByName('inTheBox');
+						let i = index
+					"
+				>
+					<div class="row">
+						<div class="col-10">
+							<input
+								class="form-control"
+								type="text"
+								[name]="'inTheBoxItem ' + i"
+								[id]="'inTheBoxItem ' + i"
+								placeholder="Item"
+								[formControlName]="i"
+							/>
+						</div>
+						<div class="col-2">
+							<button
+								class="btn btn-danger btn-rmv-ctrl"
+								type="button"
+								(click)="removeControlByName('inTheBox', i)"
+							>
+								X
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<div class="form-check">
+					<label class="form-check-label" for="shippingField">
+						Free Shipping
+					</label>
+					<input
+						class="form-check-input"
+						type="checkbox"
+						name="shippingField"
+						id="shippingField"
+						formControlName="freeShipping"
+					/>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<button
+				type="button"
+				class="btn btn-success"
+				(click)="imagePicker.click()"
+			>
+				SELECT IMAGES
+			</button>
+			<input
+				type="file"
+				multiple
+				#imagePicker
+				(change)="onImagesSelected($event)"
+			/>
+			<div>
+				<small
+					class="form-text"
+					[ngClass]="{
+						'invalid-feedback': productForm
+							.get('images')
+							.hasError('invalidMimeType'),
+						'text-muted': !productForm.get('images').hasError('invalidMimeType')
+					}"
+				>
+					Supported formats (.png, .jpg & .jpeg)
+				</small>
+				<small
+					class="form-text"
+					[ngClass]="{
+						'invalid-feedback': productForm
+							.get('images')
+							.hasError('filesMoreThanAllowed'),
+						'text-muted': !productForm
+							.get('images')
+							.hasError('filesMoreThanAllowed')
+					}"
+				>
+					At most {{ maxFilesAllowedToUpload }} files allowed
+				</small>
+			</div>
+
+			<div
+				class="preview"
+				*ngIf="imagePreviews.length > 0 && productForm.get('images').valid"
+			>
+				<div
+					class="image-preview"
+					*ngFor="let imagePreview of imagePreviews; let i = index"
+				>
+					<img [src]="imagePreview" [alt]="'Preview ' + i" />
+				</div>
+			</div>
+		</div>
+
+		<small
+			class="invalid-feedback invalid-feedback-form"
+			*ngIf="productForm.hasError('server-error') && productForm.invalid"
+		>
+			{{ productForm.errors["server-error"] }}
+		</small>
+		<button
+			type="submit"
+			class="btn btn-primary"
+			[disabled]="productForm.invalid"
+		>
+			Add Product
+		</button>
+	</form>
+</div>

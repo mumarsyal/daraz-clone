@@ -1,70 +1,107 @@
+.navbar-grey.bg-grey {
+	background-color: #ececec;
+}
+
+.navbar-grey .flex-sm-row {
+	margin: 0 auto;
+}
+
+.navbar-grey nav .text-sm-center {
+	padding: 0 0.5rem;
+	font-size: 0.75rem;
+	color: #000;
+	text-transform: uppercase;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.navbar-grey nav .text-sm-center.active {
+	color: #f57224;
+}
+
+.navbar-grey nav .text-sm-center:hover {
+	color: #f57224;
+	text-decoration: underline;
+}
+
 .bg-light {
-    background-color: #ffffff !important;
+	background-color: #ffffff !important;
 }
 
 .navbar .container-fluid {
-    margin: 0 5rem;
+	margin: 0 5rem;
+	padding: 0%;
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (max-width: 991px) {
-    .navbar .container-fluid {
-        margin: 0 1rem;
-    }
+	.navbar .container-fluid {
+		margin: 0 1rem;
+	}
 }
 
 .navbar-brand img {
-    height: 3rem;
+	height: 3rem;
 }
 
 .navbar-collapse {
-    height: 3rem;
-    margin-top: 0.6rem;
+	/* height: 3rem; */
+	margin-top: 0.6rem;
 }
 
 .d-flex.search-form {
-    width: 100%;
+	width: 100%;
 }
 
 .d-flex.search-form input {
-    background-color: #F5F5F5;
-    border: 0;
-    border-radius: 0;
+	background-color: #f5f5f5;
+	border: 0;
+	border-radius: 0;
 }
 
 .d-flex.search-form input:focus {
-    box-shadow: none;
+	box-shadow: none;
 }
 
 .d-flex.search-form .input-group-text {
-    padding-right: 1rem;
-    padding-left: 1rem;
-    background-color: #F57224;
+	padding-right: 1rem;
+	padding-left: 1rem;
+	background-color: #f57224;
 }
 
 .search-form .input-group-text .fa-search {
-    color: #ffffff;
+	color: #ffffff;
 }
 
-.d-flex.search-form, .nav-item {
-    margin: 0 2rem;
+.d-flex.search-form,
+.nav-item {
+	margin: 0 2rem;
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (max-width: 991px) {
-    .d-flex.search-form, .nav-item {
-        margin: 0;
-    }
-    .nav-item {
-        text-align: center;
-    }
+	.d-flex.search-form,
+	.nav-item {
+		margin: 0;
+	}
+	.nav-item {
+		text-align: center;
+	}
 }
 
 .nav-item .fa-shopping-cart {
-    font-size: 2rem;
-    padding-top: 0.3rem;
+	font-size: 2rem;
+	padding-top: 0.3rem;
 }
 
 .nav-link.download-app img {
-    height: 2rem;
+	height: 2rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler:hover {
+    box-shadow: 0 0 0 .25rem;
 }

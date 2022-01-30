@@ -1,0 +1,59 @@
+<form
+	class="category-form"
+	method="post"
+	[formGroup]="categoryForm"
+	(submit)="onAddCategory()"
+>
+	<div class="form-group">
+		<label for="titleField">Title: </label>
+		<input
+			class="form-control"
+			type="text"
+			name="titleField"
+			id="titleField"
+			placeholder="Category Title"
+			formControlName="title"
+		/>
+	</div>
+	<div class="form-group">
+		<button type="button" class="btn btn-success" (click)="imagePicker.click()">
+			SELECT IMAGE
+		</button>
+		<input type="file" #imagePicker (change)="onImageSelected($event)" />
+		<div>
+			<small
+				id="categoryImageHelp"
+				class="form-text"
+				[ngClass]="{
+					'invalid-feedback': categoryForm
+						.get('image')
+						.hasError('invalidMimeType'),
+					'text-muted': !categoryForm.get('image').hasError('invalidMimeType')
+				}"
+			>
+				Supported formats (.png, .jpg & .jpeg)
+			</small>
+		</div>
+		<div
+			class="image-preview"
+			*ngIf="
+				imagePreview && imagePreview !== '' && categoryForm.get('image').valid
+			"
+		>
+			<img [src]="imagePreview" [alt]="categoryForm.title" />
+		</div>
+	</div>
+	<small
+		class="invalid-feedback invalid-feedback-form"
+		*ngIf="categoryForm.hasError('server-error') && categoryForm.invalid"
+	>
+		{{ categoryForm.errors["server-error"] }}
+	</small>
+	<button
+		type="submit"
+		class="btn btn-primary"
+		[disabled]="categoryForm.invalid"
+	>
+		Add Category
+	</button>
+</form>

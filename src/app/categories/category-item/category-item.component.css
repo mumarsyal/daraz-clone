@@ -1,0 +1,13 @@
+.card {
+	border: none;
+	border-radius: 0%;
+}
+.btn-danger.btn-sm {
+	padding: 0;
+	font-size: 0.875rem;
+	border-radius: 0;
+}
+
+.categories-card a:hover {
+	box-shadow: -2px -2px 4px 0 rgba(0, 0, 0, 0.25);
+}

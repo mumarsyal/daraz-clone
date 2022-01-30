@@ -1,0 +1,749 @@
+<div class="d-flex justify-content-center" *ngIf="loading">
+	<div class="spinner-grow text-primary" role="status">
+		<span class="sr-only">Loading...</span>
+	</div>
+</div>
+
+<div class="product-overview" *ngIf="!loading">
+	<div class="row">
+		<div class="col-md-8 basic-info">
+			<div class="row">
+				<div class="col-md-4 preview">
+					<div class="row">
+						<div class="image-loaded">
+							<img [src]="product.thumbnail" alt="thumbnail" />
+						</div>
+						<!-- <div class="more-images">
+							<div
+								id="previewCarouselControls"
+								class="carousel slide"
+								data-bs-ride="carousel"
+							>
+								<div class="carousel-inner">
+									<div
+										class="carousel-item active"
+										*ngFor="let image of product.images"
+									>
+										<img [src]="image" class="d-block w-25" />
+									</div>
+								</div>
+								<button
+									class="carousel-control-prev"
+									type="button"
+									data-bs-target="#previewCarouselControls"
+									data-bs-slide="prev"
+								>
+									<span
+										class="carousel-control-prev-icon"
+										aria-hidden="true"
+									></span>
+									<span class="visually-hidden">Previous</span>
+								</button>
+								<button
+									class="carousel-control-next"
+									type="button"
+									data-bs-target="#previewCarouselControls"
+									data-bs-slide="next"
+								>
+									<span
+										class="carousel-control-next-icon"
+										aria-hidden="true"
+									></span>
+									<span class="visually-hidden">Next</span>
+								</button>
+							</div>
+						</div> -->
+					</div>
+				</div>
+				<div class="col-md-7 detail-overview">
+					<div class="row">
+						<div class="title">{{ product.title }}</div>
+						<div class="col-sm-11 ratings-brand">
+							<div class="ratings">
+								<div class="stars">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+								<div class="reviews">
+									<a style="cursor: pointer">
+										{{ product.noOfRatings }} Ratings
+									</a>
+								</div>
+								<div class="answers">
+									<a style="cursor: pointer">
+										{{ product.noOfQuesAnswered }} Answered Questions
+									</a>
+								</div>
+							</div>
+							<div class="brand">
+								<div class="name">
+									<span>Brand: </span>
+									<a style="cursor: pointer">{{
+										product.brand || "No Brand"
+									}}</a>
+								</div>
+								<div class="from-brand">
+									<a style="cursor: pointer">
+										More {{ product.category.title }} from
+										{{ product.brand || "No Brand" }}
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-1 like-share">
+							<div class="share">
+								<a style="cursor: pointer"> <i class="fa fa-share-alt"></i></a>
+							</div>
+							<div class="like">
+								<a style="cursor: pointer"> <i class="fa fa-heart"></i></a>
+							</div>
+						</div>
+						<div class="price-promo">
+							<div class="price">
+								<span class="currency">Rs.</span>
+								<span class="price">
+									{{ product.currentPrice | number: "":"en-US" }}
+								</span>
+							</div>
+							<div class="original-price" *ngIf="product.oldPrice > 0">
+								<div class="price-was">
+									<span class="currency">Rs.</span>
+									<span class="original-price">
+										{{ product.oldPrice | number: "":"en-US" }}
+									</span>
+								</div>
+								<div class="discount">
+									-{{
+										((product.oldPrice - product.currentPrice) /
+											product.oldPrice) *
+											100 | number: "1.0-0"
+									}}%
+								</div>
+							</div>
+							<div class="promo">
+								<h6>Promotions</h6>
+								<div class="buy-more">
+									Buy More &amp; Save Up to Rs. 30
+									<i class="fa fa-caret-down"></i>
+								</div>
+							</div>
+						</div>
+						<div class="choices">
+							<div class="colors" *ngIf="product.colors.length > 0">
+								<div class="row">
+									<h6 class="col-sm-3">Color family</h6>
+									<div class="col-sm-9">
+										<div class="chosen-color">
+											{{ chosenColor || product.colors[0] }}
+										</div>
+										<div class="color-choices">
+											<a
+												style="cursor: pointer"
+												(click)="chosenColor = color"
+												*ngFor="let color of product.colors"
+											>
+												<img [src]="product.thumbnail" [alt]="color" />
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="quantity">
+								<div class="row">
+									<h6 class="col-3">Quantity</h6>
+									<div class="col-9">
+										<div class="number-input">
+											<button
+												onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+												(click)="onQuantityChanged(quantity)"
+											></button>
+											<input
+												class="quantity"
+												min="1"
+												name="quantity"
+												value="1"
+												type="number"
+												#quantity
+												(change)="onQuantityChanged(quantity)"
+											/>
+											<button
+												onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+												(click)="onQuantityChanged(quantity)"
+												class="plus"
+											></button>
+										</div>
+									</div>
+									<div class="savings">
+										You will pay
+										<span class="price">
+											Rs.{{ billToPay | number: "":"en-US" }}
+										</span>
+										. Buy 10 and save
+										<span class="saving">Rs.30.00</span>
+									</div>
+								</div>
+							</div>
+							<div class="actions">
+								<div class="row">
+									<div class="col-5">
+										<button class="btn btn-buy-now">Buy Now</button>
+									</div>
+									<div class="col-5">
+										<button class="btn btn-to-cart">Add to Cart</button>
+									</div>
+								</div>
+							</div>
+							<div class="actions">
+								<div class="row">
+									<button class="btn btn-danger" (click)="onDeleteProduct()">
+										Delete
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4 aside">
+			<div class="shipping-options">
+				<div class="address">
+					<div class="header">
+						<span>Delivery Options</span>
+						<span class="pull-right">
+							<i class="fa fa-info-circle"></i>
+						</span>
+					</div>
+					<div class="row info">
+						<div class="col-1 icon">
+							<span>
+								<i class="fa fa-map-marker"></i>
+							</span>
+						</div>
+						<div class="col-8 content">
+							<div class="main">Sindh, Karachi - Gulshan-e-Iqbal, Block 15</div>
+						</div>
+						<div class="col-3 option">
+							<a style="cursor: pointer">CHANGE</a>
+						</div>
+					</div>
+				</div>
+				<div class="payment-methods">
+					<div class="row info">
+						<div class="col-1 icon">
+							<span>
+								<i class="fa fa-truck"></i>
+							</span>
+						</div>
+						<div class="col-8 content">
+							<div class="main">Home Delivery</div>
+							<div class="sub">7 - 11 days</div>
+						</div>
+						<div class="col-3 option">
+							<span>Rs. 69</span>
+						</div>
+					</div>
+					<div class="row info">
+						<div class="col-1 icon">
+							<span>
+								<i class="fa fa-money-bill"></i>
+							</span>
+						</div>
+						<div class="col-8 content">
+							<div class="main">Cash on Delivery Available</div>
+						</div>
+					</div>
+				</div>
+				<div class="warranty">
+					<div class="header">
+						<span>Return & Warranty</span>
+						<span class="pull-right">
+							<i class="fa fa-info-circle"></i>
+						</span>
+					</div>
+					<div class="row info">
+						<div class="col-1 icon">
+							<span>
+								<i class="fa fa-undo"></i>
+							</span>
+						</div>
+						<div class="col-8 content">
+							<div class="main">7 Days Returns</div>
+							<div class="sub">Change of mind is not applicable</div>
+						</div>
+					</div>
+
+					<div class="row info">
+						<div class="col-1 icon">
+							<span>
+								<i class="fa fa-undo"></i>
+							</span>
+						</div>
+						<div class="col-8 content">
+							<div class="main">Warranty not available</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="sold-by">
+				<div class="seller">
+					<div class="header">
+						<span>Sold by</span>
+					</div>
+					<div class="row info">
+						<div class="col-8 content">
+							<div class="main">{{ product.seller.name }}</div>
+						</div>
+						<div class="col-4 option">
+							<a style="cursor: pointer">
+								<i class="fa fa-comments" style="padding-right: 0.25rem"> </i>
+								Chat Now
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="seller-reviews">
+					<table>
+						<thead class="header">
+							<td>Positive Seller Ratings</td>
+							<td>Ship On Time</td>
+							<td>Chat Response Rate</td>
+						</thead>
+						<tbody class="content">
+							<tr class="main">
+								<td>
+									{{
+										product.seller.positiveRatings | number: "1.0-0":"en-US"
+									}}%
+								</td>
+								<td>
+									{{ product.seller.shipOnTime | number: "1.0-0":"en-US" }}%
+								</td>
+								<td>
+									{{ product.seller.chatResponse | number: "1.0-0":"en-US" }}%
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="go-to-store">
+					<a
+						[routerLink]="['/products']"
+						[queryParams]="{ seller: product.seller._id }"
+					>
+						Go To Store
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="product-details" *ngIf="!loading">
+	<div class="row">
+		<div class="col-lg-10 details">
+			<div class="header">
+				<h5>Product details of {{ product.title }}</h5>
+			</div>
+			<div class="features">
+				<div class="row">
+					<div class="col-md-6">
+						<ul>
+							<li
+								*ngFor="
+									let feature of product.features
+									| slice
+										: 0:(product.features.length % 2 === 0
+												? product.features.length / 2
+												: product.features.length / 2 + 1)
+								"
+							>
+								{{ feature }}
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-6">
+						<ul>
+							<li
+								*ngFor="
+									let feature of product.features
+										| slice
+											: (product.features.length % 2 === 0
+													? product.features.length / 2
+													: product.features.length / 2 + 1)
+								"
+							>
+								{{ feature }}
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="images">
+				<p *ngIf="product.description">{{ product.description }}</p>
+				<img *ngIf="product.images[0]" [src]="product.images[0]" alt="" />
+				<div *ngIf="detailsExpanded" class="expanded-images">
+					<img
+						*ngFor="let image of product.images | slice: 1"
+						[src]="image"
+						alt=""
+					/>
+				</div>
+			</div>
+			<div *ngIf="detailsExpanded" class="specifications">
+				<div class="header">
+					<h5>Specifications of {{ product.title }}</h5>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="spec">
+							<div class="title">Brand</div>
+							<div class="value">{{ product.brand || "No Brand" }}</div>
+						</div>
+						<div class="spec">
+							<div class="title">Material</div>
+							<div class="value">{{ product.material }}</div>
+						</div>
+						<div class="spec">
+							<div class="title">Model</div>
+							<div class="value">{{ product.model }}</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="spec">
+							<div class="title">SKU</div>
+							<div class="value">{{ product.sku }}</div>
+						</div>
+						<div class="spec">
+							<div class="title">What’s in the box</div>
+							<div class="value" *ngFor="let item of product.inTheBox">
+								{{ item }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="show-more">
+				<button
+					class="btn btn-primary"
+					type="button"
+					(click)="detailsExpanded = !detailsExpanded"
+				>
+					{{ detailsExpanded ? "SHOW LESS" : "SHOW MORE" }}
+				</button>
+			</div>
+		</div>
+		<div class="col-lg-2 from-store">
+			<div class="header">
+				<h5>From The Same Store</h5>
+			</div>
+			<div class="d-flex justify-content-center" *ngIf="loadingFromSameSeller">
+				<div class="spinner-grow text-primary" role="status">
+					<span class="sr-only">Loading...</span>
+				</div>
+			</div>
+			<div *ngIf="!loadingFromSameSeller && productsFromSameSeller.length > 0">
+				<app-product-item
+					*ngFor="let prod of productsFromSameSeller"
+					[product]="prod"
+				></app-product-item>
+			</div>
+			<p *ngIf="!loadingFromSameSeller && productsFromSameSeller.length <= 0">
+				No more products from this store!
+			</p>
+		</div>
+	</div>
+</div>
+
+<div class="product-rate-review" *ngIf="!loading">
+	<div class="row">
+		<div class="col-lg-10 rate-review">
+			<div class="header">
+				<h5>Ratings & Reviews of {{ product.title }}</h5>
+			</div>
+			<div class="ratings">
+				<div class="row">
+					<div class="col-md-4 summary">
+						<div class="score">
+							<span class="earned">{{
+								product.rating | number: "1.1-1":"en-US"
+							}}</span>
+							<span class="max">/5</span>
+						</div>
+						<div class="stars">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+						</div>
+						<div class="no-of-ratings">
+							{{ product.noOfRatings | number: "":"en-US" }} Ratings
+						</div>
+					</div>
+					<div class="col-md-8 last-five">
+						<div class="row">
+							<div class="col-12 col-sm-4 col-md-5 col-lg-4">
+								<div class="stars">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+							</div>
+							<div class="col-10 col-sm-5 prog-bar">
+								<div class="progress">
+									<div
+										class="progress-bar"
+										role="progressbar"
+										style="width: 25%"
+										aria-valuenow="25"
+										aria-valuemin="0"
+										aria-valuemax="100"
+									></div>
+								</div>
+							</div>
+							<div class="col-2 col-sm-1">33</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-sm-4 col-md-5 col-lg-4">
+								<div class="stars">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+							</div>
+							<div class="col-10 col-sm-5 prog-bar">
+								<div class="progress">
+									<div
+										class="progress-bar"
+										role="progressbar"
+										style="width: 25%"
+										aria-valuenow="25"
+										aria-valuemin="0"
+										aria-valuemax="100"
+									></div>
+								</div>
+							</div>
+							<div class="col-2 col-sm-1">33</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-sm-4 col-md-5 col-lg-4">
+								<div class="stars">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+							</div>
+							<div class="col-10 col-sm-5 prog-bar">
+								<div class="progress">
+									<div
+										class="progress-bar"
+										role="progressbar"
+										style="width: 25%"
+										aria-valuenow="25"
+										aria-valuemin="0"
+										aria-valuemax="100"
+									></div>
+								</div>
+							</div>
+							<div class="col-2 col-sm-1">33</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-sm-4 col-md-5 col-lg-4">
+								<div class="stars">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+							</div>
+							<div class="col-10 col-sm-5 prog-bar">
+								<div class="progress">
+									<div
+										class="progress-bar"
+										role="progressbar"
+										style="width: 25%"
+										aria-valuenow="25"
+										aria-valuemin="0"
+										aria-valuemax="100"
+									></div>
+								</div>
+							</div>
+							<div class="col-2 col-sm-1">33</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-sm-4 col-md-5 col-lg-4">
+								<div class="stars">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+							</div>
+							<div class="col-10 col-sm-5 prog-bar">
+								<div class="progress">
+									<div
+										class="progress-bar"
+										role="progressbar"
+										style="width: 25%"
+										aria-valuenow="25"
+										aria-valuemin="0"
+										aria-valuemax="100"
+									></div>
+								</div>
+							</div>
+							<div class="col-2 col-sm-1">33</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="reviews">
+				<div class="header">
+					<div class="row">
+						<div class="col-4 col-sm-8">Product Reviews</div>
+						<div class="col-4 col-sm-2 sort-filter">
+							<span><i class="fa fa-sort"></i></span>
+							<span class="title">Sort: </span>
+							<span>Relevance</span>
+						</div>
+						<div class="col-4 col-sm-2 sort-filter">
+							<span><i class="fa fa-filter"></i></span>
+							<span class="title">Filter: </span>
+							<span>All Star</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="all-comments">
+					<div class="comments">
+						<div class="row">
+							<div class="col-8">
+								<div class="stars">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+								<div class="by-user">
+									<span class="user">by {{ "Hassan N." }}</span>
+									<span class="verified-purchase"> Verified Purchase</span>
+								</div>
+								<div class="comment">
+									{{
+										"product is as shown in pictures. good quality. price is also reasonable from market. received in time."
+									}}
+								</div>
+								<div class="images">
+									<img
+										src="assets/images/products/fridge-storage-basket.jpg"
+										alt="fridge-storage-basket"
+									/>
+									<img
+										src="assets/images/products/fridge-storage-basket.jpg"
+										alt="fridge-storage-basket"
+									/>
+									<img
+										src="assets/images/products/fridge-storage-basket.jpg"
+										alt="fridge-storage-basket"
+									/>
+									<img
+										src="assets/images/products/fridge-storage-basket.jpg"
+										alt="fridge-storage-basket"
+									/>
+									<img
+										src="assets/images/products/fridge-storage-basket.jpg"
+										alt="fridge-storage-basket"
+									/>
+									<img
+										src="assets/images/products/fridge-storage-basket.jpg"
+										alt="fridge-storage-basket"
+									/>
+								</div>
+								<div class="prod-features">
+									Color Family: Black, Size: Int: normal
+								</div>
+							</div>
+							<div class="col-4 commented-on">6 days ago</div>
+						</div>
+						<div class="row likes">
+							<div class="col-8">
+								<div>
+									<span><i class="fa fa-thumbs-up"></i></span>
+									<span>{{ 1 }}</span>
+								</div>
+							</div>
+							<div class="col-4">
+								<span class="pull-right"><i class="fa fa-ellipsis-v"></i></span>
+							</div>
+						</div>
+						<div class="row reply">
+							<div class="info">
+								<i class=""
+									><img src="assets/images/reply-badge.png" alt="reply"
+								/></i>
+								Seller Response - 6 days ago
+							</div>
+							<div class="comment">Thanks sir</div>
+							<div class="row likes">
+								<div class="col-8">
+									<div>
+										<span><i class="fa fa-thumbs-up"></i></span>
+										<span>{{ 1 }}</span>
+									</div>
+								</div>
+								<div class="col-4">
+									<span class="pull-right"
+										><i class="fa fa-ellipsis-v"></i
+									></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="comments-pagination">
+					<nav aria-label="Comments navigation">
+						<ul class="pagination pagination-lg justify-content-end">
+							<li class="page-item">
+								<a class="page-link" href="" aria-label="Previous">
+									<span aria-hidden="true"
+										><i class="fa fa-angle-left"></i
+									></span>
+								</a>
+							</li>
+							<li class="page-item active" aria-current="page">
+								<a class="page-link" href="">1</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="">2</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="">3</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="" aria-label="Next">
+									<span aria-hidden="true"
+										><i class="fa fa-angle-right"></i
+									></span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

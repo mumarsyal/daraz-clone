@@ -1,33 +1,98 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="">
-          <img src="assets/images/daraz-logo.png" alt="Daraz">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="d-flex search-form">
-            <div class="input-group">
-                <input type="search" class="form-control" placeholder="Search in Daraz" aria-label="Search">
-                <button class="input-group-text" type="submit">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
-        </form>
+<nav class="navbar navbar-expand-lg navbar-grey bg-grey">
+	<div class="container-fluid">
+		<nav class="nav flex-sm-row">
+			<a class="flex-sm-fill text-sm-center"> Save More on App </a>
+			<a class="flex-sm-fill text-sm-center"> Daraz affiliate program </a>
+			<a class="flex-sm-fill text-sm-center">Sell on Daraz</a>
+			<a class="flex-sm-fill text-sm-center">Customer Care</a>
+			<a class="flex-sm-fill text-sm-center">Track my order</a>
+			<a
+				class="flex-sm-fill text-sm-center"
+				[routerLink]="['/login']"
+				[routerLinkActive]="'active'"
+				*ngIf="!userIsAuthenticated"
+			>
+				login
+			</a>
+			<a
+				class="flex-sm-fill text-sm-center"
+				[routerLink]="['/signup']"
+				[routerLinkActive]="'active'"
+				*ngIf="!userIsAuthenticated"
+			>
+				signup
+			</a>
+			<a
+				class="flex-sm-fill text-sm-center"
+				[routerLink]="['/categories/new']"
+				[routerLinkActive]="'active'"
+				*ngIf="userIsAuthenticated"
+			>
+				new category
+			</a>
+			<a
+				class="flex-sm-fill text-sm-center"
+				[routerLink]="['/products/new']"
+				[routerLinkActive]="'active'"
+				*ngIf="userIsAuthenticated"
+			>
+				new product
+			</a>
+			<a
+				class="flex-sm-fill text-sm-center"
+				*ngIf="userIsAuthenticated"
+				(click)="onLogout()"
+			>
+				logout
+			</a>
+			<a class="flex-sm-fill text-sm-center">زبان تبدیل کریں</a>
+		</nav>
+	</div>
+</nav>
 
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="">
-                <i class="fa fa-shopping-cart"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link download-app" href="">
-                <img src="assets/images/daraz-app-link.png" alt="daraz app">
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+	<div class="container-fluid">
+		<a class="navbar-brand" [routerLink]="['/']">
+			<img src="assets/images/daraz-logo.png" alt="Daraz" />
+		</a>
+		<button
+			class="navbar-toggler"
+			type="button"
+			data-bs-toggle="collapse"
+			data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent"
+			aria-expanded="false"
+			aria-label="Toggle navigation"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<form class="d-flex search-form">
+				<div class="input-group">
+					<input
+						type="search"
+						class="form-control"
+						placeholder="Search in Daraz"
+						aria-label="Search"
+					/>
+					<button class="input-group-text" type="submit">
+						<i class="fa fa-search"></i>
+					</button>
+				</div>
+			</form>
+
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link">
+						<i class="fa fa-shopping-cart"></i>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link download-app">
+						<img src="assets/images/daraz-app-link.png" alt="daraz app" />
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

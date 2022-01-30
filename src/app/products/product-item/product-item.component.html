@@ -1,0 +1,54 @@
+<div class="card product-card">
+	<a [routerLink]="['/products/detail', product._id]">
+		<img [src]="product.thumbnail" class="card-img-top" alt="Thumbnail" />
+		<div class="card-body">
+			<div class="variants" *ngIf="product.images.length > 0">
+				<div *ngFor="let image of product.images; let i = index">
+					<img [src]="image" alt="{{ variant + i }}" />
+				</div>
+			</div>
+			<div class="card-title offer-by">
+				<img src="assets/images/products/daraz-mall.png" alt="daraz-mall" />
+			</div>
+			<div class="card-text">
+				{{ product.title }}
+			</div>
+			<div class="price">
+				<span class="currency">Rs.</span>
+				<span class="price">
+					{{ product.currentPrice | number: "":"en-US" }}
+				</span>
+			</div>
+			<div class="original-price">
+				<div class="price-was" *ngIf="product.oldPrice > 0">
+					<span class="currency">Rs.</span>
+					<span class="original-price">
+						{{ product.oldPrice | number: "":"en-US" }}
+					</span>
+				</div>
+				<div class="discount" *ngIf="product.oldPrice > 0">
+					-{{
+						((product.oldPrice - product.currentPrice) / product.oldPrice) * 100
+							| number: "1.0-0"
+					}}%
+				</div>
+				<div class="free-shipping" *ngIf="product.freeShipping">
+					<img
+						src="assets/images/products/free-shipping.png"
+						alt="free-shipping"
+					/>
+				</div>
+			</div>
+			<div class="rating-reviews">
+				<div class="rating">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+				</div>
+				<div class="reviews">({{ product.noOfRatings }})</div>
+			</div>
+		</div>
+	</a>
+</div>
