@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { ProductService } from '../product.service';
@@ -63,16 +63,21 @@ export class AddProductComponent implements OnInit {
 			}),
 			brand: new FormControl(null),
 			currentPrice: new FormControl(null, {
-				validators: [Validators.required, Validators.min(1)],
+				validators: [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)],
 			}),
 			oldPrice: new FormControl(null, {
-				validators: [Validators.min(1)],
+				validators: [Validators.pattern(/^[1-9]+[0-9]*$/)],
 			}),
 			freeShipping: new FormControl(false),
-			colors: new FormControl(null), //
-			features: new FormControl(null, {
-				validators: [Validators.required],
-			}), //
+			colors: new FormArray([new FormControl(null)]),
+			features: new FormArray(
+				[
+					new FormControl(null, {
+						validators: [Validators.required],
+					}),
+				],
+				{ validators: [Validators.required] }
+			),
 			description: new FormControl(null),
 			images: new FormControl(null, {
 				validators: [Validators.required],
@@ -87,10 +92,32 @@ export class AddProductComponent implements OnInit {
 			material: new FormControl(null, {
 				validators: [Validators.required],
 			}),
-			inTheBox: new FormControl(null, {
-				validators: [Validators.required],
-			}), //
+			inTheBox: new FormArray(
+				[
+					new FormControl(null, {
+						validators: [Validators.required],
+					}),
+				],
+				{ validators: [Validators.required] }
+			),
 		});
+	}
+
+	getControlsByName(controlName: string) {
+		return (<FormArray>this.productForm.get(controlName)).controls;
+	}
+
+	addNewControlByName(controlName: string) {
+		let controlsArray = <FormArray>this.productForm.get(controlName);
+		let options = {};
+		if (controlName !== 'colors') {
+			options = { validators: [Validators.required] };
+		}
+		controlsArray.push(new FormControl(null, options));
+	}
+
+	removeControlByName(controlName: string, index: number) {
+		(<FormArray>this.productForm.get(controlName)).removeAt(index);
 	}
 
 	onImagesSelected(event: Event) {
@@ -124,6 +151,13 @@ export class AddProductComponent implements OnInit {
 		}
 
 		const product: Product = this.productForm.value;
+		// remove color controls with null values
+		product.colors.forEach(function (item, index, object) {
+			if (!item) {
+				object.splice(index, 1);
+			}
+		});
+
 		this.productService.addProduct(product).subscribe(
 			(data) => {
 				this.router.navigate(['/products']);

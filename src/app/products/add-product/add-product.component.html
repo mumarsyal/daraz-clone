@@ -140,41 +140,144 @@
 				</select>
 			</div>
 		</div>
-		<div class="row">
-			<div class="form-group col-md-6">
-				<label for="colorField">Colors</label>
-				<input
-					class="form-control"
-					type="text"
-					name="colorField"
+		<div class="row form-arrays">
+			<div class="col-md-4" formArrayName="colors">
+				<div class="row">
+					<div class="col-12">
+						<button
+							class="btn btn-success btn-add-ctrl"
+							type="button"
+							(click)="addNewControlByName('colors')"
+						>
+							Add Color
+						</button>
+					</div>
+				</div>
+				<label for="colorField" *ngIf="getControlsByName('colors').length">
+					Colors
+				</label>
+				<div
+					class="form-group"
 					id="colorField"
-					placeholder="Colors"
-					formControlName="colors"
-				/>
+					*ngFor="let colorCtrl of getControlsByName('colors'); let i = index"
+				>
+					<div class="row">
+						<div class="col-10">
+							<input
+								class="form-control"
+								type="text"
+								[name]="'colorField ' + i"
+								[id]="'colorField ' + i"
+								placeholder="Color"
+								[formControlName]="i"
+							/>
+						</div>
+						<div class="col-2">
+							<button
+								class="btn btn-danger btn-rmv-ctrl"
+								type="button"
+								(click)="removeControlByName('colors', i)"
+							>
+								X
+							</button>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="form-group col-md-6">
-				<label for="featuresField">Features</label>
-				<input
-					class="form-control"
-					type="text"
-					name="featuresField"
+
+			<div class="col-md-4" formArrayName="features">
+				<div class="row">
+					<div class="col-12">
+						<button
+							class="btn btn-success btn-add-ctrl"
+							type="button"
+							(click)="addNewControlByName('features')"
+						>
+							Add Feature
+						</button>
+					</div>
+				</div>
+				<label for="featuresField" *ngIf="getControlsByName('features').length">
+					Features
+				</label>
+				<div
+					class="form-group"
 					id="featuresField"
-					placeholder="Features"
-					formControlName="features"
-				/>
+					*ngFor="
+						let featureCtrl of getControlsByName('features');
+						let i = index
+					"
+				>
+					<div class="row">
+						<div class="col-10">
+							<input
+								class="form-control"
+								type="text"
+								[name]="'featureField ' + i"
+								[id]="'featureField ' + i"
+								placeholder="Feature"
+								[formControlName]="i"
+							/>
+						</div>
+						<div class="col-2">
+							<button
+								class="btn btn-danger btn-rmv-ctrl"
+								type="button"
+								(click)="removeControlByName('features', i)"
+							>
+								X
+							</button>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="form-group">
-				<label for="inTheBoxField">In The Box</label>
-				<input
-					class="form-control"
-					type="text"
-					name="inTheBoxField"
+
+			<div class="col-md-4" formArrayName="inTheBox">
+				<div class="row">
+					<div class="col-12">
+						<button
+							class="btn btn-success btn-add-ctrl"
+							type="button"
+							(click)="addNewControlByName('inTheBox')"
+						>
+							Add Box Items
+						</button>
+					</div>
+				</div>
+				<label for=""></label>
+				<label for="inTheBoxField" *ngIf="getControlsByName('inTheBox').length">
+					In The Box
+				</label>
+				<div
+					class="form-group"
 					id="inTheBoxField"
-					placeholder="In The Box"
-					formControlName="inTheBox"
-				/>
+					*ngFor="
+						let inTheBoxCtrl of getControlsByName('inTheBox');
+						let i = index
+					"
+				>
+					<div class="row">
+						<div class="col-10">
+							<input
+								class="form-control"
+								type="text"
+								[name]="'inTheBoxItem ' + i"
+								[id]="'inTheBoxItem ' + i"
+								placeholder="Item"
+								[formControlName]="i"
+							/>
+						</div>
+						<div class="col-2">
+							<button
+								class="btn btn-danger btn-rmv-ctrl"
+								type="button"
+								(click)="removeControlByName('inTheBox', i)"
+							>
+								X
+							</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="row">

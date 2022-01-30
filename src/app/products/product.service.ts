@@ -16,12 +16,31 @@ export class ProductService {
 	addProduct(product: Product) {
 		const productData = new FormData();
 		for (const key in product) {
-			if (Object.prototype.hasOwnProperty.call(product, key) && key !== 'images') {
+			if (
+				Object.prototype.hasOwnProperty.call(product, key) &&
+				key !== 'images' &&
+				key !== 'colors' &&
+				key !== 'features' &&
+				key !== 'inTheBox'
+			) {
 				productData.append(key, product[key]);
 			}
 		}
-		for(let i = 0; i < product.images.length; i++){
-			productData.append('images', product.images[i], product.images[i]['name']);
+		for (let i = 0; i < product.images.length; i++) {
+			productData.append(
+				'images',
+				product.images[i],
+				product.images[i]['name']
+			);
+		}
+		for (let i = 0; i < product.colors.length; i++) {
+			productData.append('colors', product.colors[i]);
+		}
+		for (let i = 0; i < product.features.length; i++) {
+			productData.append('features', product.features[i]);
+		}
+		for (let i = 0; i < product.inTheBox.length; i++) {
+			productData.append('inTheBox', product.inTheBox[i]);
 		}
 
 		return this.http.post<{ message: string; product: Product }>(
