@@ -28,6 +28,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 		brand: [],
 		seller: [],
 		category: [],
+		sort: null,
 	};
 	queryParamSub: Subscription;
 
@@ -94,6 +95,9 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 					// ignore it
 				}
 			}
+			if (queryParams['sort']) {
+				this.filtersApplied.sort = queryParams['sort'];
+			}
 
 			this.productService.getProducts(queryParams).subscribe((result) => {
 				this.products = result.products;
@@ -121,12 +125,16 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 	}
 
 	filterProducts(filter: string, value: string) {
-		const index = this.filtersApplied[filter].indexOf(value);
-
-		if (index > -1) {
-			this.filtersApplied[filter].splice(index, 1);
+		if (filter === 'sort') {
+			this.filtersApplied.sort = value;
 		} else {
-			this.filtersApplied[filter].push(value);
+			const index = this.filtersApplied[filter].indexOf(value);
+
+			if (index > -1) {
+				this.filtersApplied[filter].splice(index, 1);
+			} else {
+				this.filtersApplied[filter].push(value);
+			}
 		}
 
 		let qParams = { ...this.filtersApplied };
@@ -140,10 +148,13 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 		if (!qParams.category.length) {
 			delete qParams.category;
 		}
+		if (!qParams.sort) {
+			delete qParams.sort;
+		}
 
 		this.router.navigate([], {
 			relativeTo: this.route,
-			queryParams: qParams
+			queryParams: qParams,
 		});
 	}
 

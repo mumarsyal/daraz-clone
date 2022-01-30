@@ -93,7 +93,26 @@
 			<div class="sort-by me-2">
 				<label for="sort-by">Sort By: </label>
 				<select class="ms-2 me-2" name="sort" id="sort-by">
-					<option value="name">Name</option>
+					<option
+						[selected]="!filtersApplied.sort"
+						(click)="filterProducts('sort', null)"
+					>
+						----
+					</option>
+					<option
+						value="title"
+						[selected]="filtersApplied.sort === 'title'"
+						(click)="filterProducts('sort', 'title')"
+					>
+						Name
+					</option>
+					<option
+						value="price"
+						[selected]="filtersApplied.sort === 'price'"
+						(click)="filterProducts('sort', 'price')"
+					>
+						Price
+					</option>
 				</select>
 			</div>
 			<div class="view-as">
