@@ -6,7 +6,7 @@
 	>
 		X
 	</small>
-	<a href="">
+	<a [routerLink]="['/products']" [queryParams]="{category: category._id}">
 		<img [src]="category.imagePath" class="card-img-top" alt="study-exam" />
 		<div class="card-body">
 			<p class="card-text">{{ category.title }}</p>

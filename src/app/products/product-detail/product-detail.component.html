@@ -196,6 +196,13 @@
 									</div>
 								</div>
 							</div>
+							<div class="actions">
+								<div class="row">
+									<button class="btn btn-danger" (click)="onDeleteProduct()">
+										Delete
+									</button>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -324,7 +331,12 @@
 					</table>
 				</div>
 				<div class="go-to-store">
-					<a style="cursor: pointer">Go To Store</a>
+					<a
+						[routerLink]="['/products']"
+						[queryParams]="{ seller: product.seller._id }"
+					>
+						Go To Store
+					</a>
 				</div>
 			</div>
 		</div>

@@ -30,7 +30,7 @@
 						[value]="brand"
 						[checked]="filtersApplied.brand.includes(brand)"
 					/>
-					<span>{{ brand }}</span>
+					<span> {{ brand }}</span>
 				</label>
 			</div>
 		</div>
@@ -49,7 +49,7 @@
 						[value]="seller._id"
 						[checked]="filtersApplied.seller.includes(seller._id)"
 					/>
-					<span>{{ seller.name }}</span>
+					<span> {{ seller.name }}</span>
 				</label>
 			</div>
 		</div>
@@ -68,21 +68,21 @@
 						[value]="category._id"
 						[checked]="filtersApplied.category.includes(category._id)"
 					/>
-					<span>{{ category.title }}</span>
+					<span> {{ category.title }}</span>
 				</label>
 			</div>
 		</div>
-		<div class="price">
+		<!-- <div class="price">
 			<div class="filter-type">Price</div>
 			<div class="filter-options">
-				<input type="text" placeholder="Min" />
+				<input type="number" placeholder="Min" />
 				<span> - </span>
-				<input type="text" placeholder="Max" />
+				<input type="number" placeholder="Max" />
 				<button class="btn btn-warning">
 					<i class="fa fa-play"></i>
 				</button>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </aside>
 

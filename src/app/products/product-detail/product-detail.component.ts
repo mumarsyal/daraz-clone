@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { Product } from '../product.model';
@@ -21,7 +21,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
 	constructor(
 		private productService: ProductService,
-		private activatedRoute: ActivatedRoute
+		private activatedRoute: ActivatedRoute,
+		private router: Router
 	) {}
 
 	ngOnInit(): void {
@@ -54,6 +55,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 		if (+quantity.value >= 10) {
 			this.billToPay = this.billToPay - 30;
 		}
+	}
+
+	onDeleteProduct() {
+		this.productService.deleteProduct(this.product._id).subscribe((result) => {
+			this.router.navigate(['/products']);
+		});
 	}
 
 	ngOnDestroy(): void {

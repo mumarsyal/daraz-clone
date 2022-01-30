@@ -52,10 +52,6 @@ aside .filter-options input[type="checkbox"] {
 	cursor: pointer;
 }
 
-aside .filter-options input {
-	margin-right: 0.5rem;
-}
-
 aside .filter-options a:hover,
 aside .filter-options label:hover {
 	color: #f57224;
@@ -65,12 +61,20 @@ aside .filter-options label:hover {
 	width: 35%;
 }
 
+aside .filter-options > input:last-of-type {
+	margin-right: 2%;
+	margin-left: 1%;
+}
+
 .price .filter-options > input:first-child {
-	margin: 0%;
+	margin-right: 1%;
+	margin-left: 0%;
 }
 
 .price .filter-options > span {
 	width: 5%;
+	display: inline-block;
+	text-align: center;
 }
 
 .price .filter-options > button {
@@ -79,6 +83,7 @@ aside .filter-options label:hover {
 	color: #fff;
 	padding: 3.5px 0;
 	border: none;
+	margin-top: -3px;
 }
 
 main {

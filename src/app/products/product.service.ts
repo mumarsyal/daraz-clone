@@ -48,6 +48,10 @@ export class ProductService {
 		}>(`${this.productsApiUrlPrefix}` + id);
 	}
 
+	deleteProduct(productId: string) {
+		return this.http.delete(`${this.productsApiUrlPrefix}` + productId);
+	}
+
 	getBrands() {
 		return this.http.get<{
 			message: string;
