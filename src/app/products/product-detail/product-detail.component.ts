@@ -2,8 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { Product } from '../product.model';
+import { AuthService } from '../../auth/auth.service';
 import { ProductService } from '../product.service';
+import { Product } from '../product.model';
 
 @Component({
 	selector: 'app-product-detail',
@@ -11,6 +12,8 @@ import { ProductService } from '../product.service';
 	styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
+	userIsAuthenticated: boolean = false;
+	private authStatusSub: Subscription;
 	detailsExpanded: boolean = false;
 	loading: boolean = false;
 	loadingFromSameSeller: boolean = false;
@@ -21,6 +24,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
 	constructor(
 		private productService: ProductService,
+		private authService: AuthService,
 		private activatedRoute: ActivatedRoute,
 		private router: Router
 	) {}
@@ -48,6 +52,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 					});
 			});
 		});
+
+		this.authStatusSub = this.authService
+			.getAuthStatusListener()
+			.subscribe((isAuthenticated) => {
+				this.userIsAuthenticated = isAuthenticated;
+			});
 	}
 
 	onQuantityChanged(quantity: HTMLInputElement) {
@@ -65,5 +75,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
 	ngOnDestroy(): void {
 		this.paramSub.unsubscribe();
+		this.authStatusSub.unsubscribe();
 	}
 }

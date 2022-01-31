@@ -196,7 +196,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="actions">
+							<div class="actions" *ngIf="userIsAuthenticated">
 								<div class="row">
 									<button class="btn btn-danger" (click)="onDeleteProduct()">
 										Delete
