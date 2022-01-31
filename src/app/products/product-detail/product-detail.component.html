@@ -61,11 +61,11 @@
 						<div class="col-sm-11 ratings-brand">
 							<div class="ratings">
 								<div class="stars">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
+									<bar-rating
+										[rate]="product.rating"
+										[max]="5"
+										[readOnly]="true"
+									></bar-rating>
 								</div>
 								<div class="reviews">
 									<a style="cursor: pointer">
@@ -356,10 +356,11 @@
 							<li
 								*ngFor="
 									let feature of product.features
-									| slice
-										: 0:(product.features.length % 2 === 0
-												? product.features.length / 2
-												: product.features.length / 2 + 1)
+										| slice
+											: 0
+											: (product.features.length % 2 === 0
+													? product.features.length / 2
+													: product.features.length / 2 + 1)
 								"
 							>
 								{{ feature }}
@@ -469,31 +470,34 @@
 				<div class="row">
 					<div class="col-md-4 summary">
 						<div class="score">
-							<span class="earned">{{
-								product.rating | number: "1.1-1":"en-US"
-							}}</span>
+							<span class="earned">
+								{{ product.rating | number: "1.1-1":"en-US" }}
+							</span>
 							<span class="max">/5</span>
 						</div>
 						<div class="stars">
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
+							<bar-rating
+								[rate]="product.rating"
+								[max]="5"
+								[readOnly]="true"
+							></bar-rating>
 						</div>
 						<div class="no-of-ratings">
 							{{ product.noOfRatings | number: "":"en-US" }} Ratings
 						</div>
 					</div>
 					<div class="col-md-8 last-five">
-						<div class="row">
+						<div
+							class="row"
+							*ngFor="let review of product.reviews | slice: 0:5"
+						>
 							<div class="col-12 col-sm-4 col-md-5 col-lg-4">
 								<div class="stars">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
+									<bar-rating
+										[rate]="review.rating"
+										[max]="5"
+										[readOnly]="true"
+									></bar-rating>
 								</div>
 							</div>
 							<div class="col-10 col-sm-5 prog-bar">
@@ -501,110 +505,16 @@
 									<div
 										class="progress-bar"
 										role="progressbar"
-										style="width: 25%"
-										aria-valuenow="25"
+										[style.width.%]="review.rating * 20"
+										[aria-valuenow]="review.rating * 20"
 										aria-valuemin="0"
 										aria-valuemax="100"
 									></div>
 								</div>
 							</div>
-							<div class="col-2 col-sm-1">33</div>
-						</div>
-						<div class="row">
-							<div class="col-12 col-sm-4 col-md-5 col-lg-4">
-								<div class="stars">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
+							<div class="col-2 col-sm-1">
+								{{ review.rating | number: "1.0-0":"en-US" }}
 							</div>
-							<div class="col-10 col-sm-5 prog-bar">
-								<div class="progress">
-									<div
-										class="progress-bar"
-										role="progressbar"
-										style="width: 25%"
-										aria-valuenow="25"
-										aria-valuemin="0"
-										aria-valuemax="100"
-									></div>
-								</div>
-							</div>
-							<div class="col-2 col-sm-1">33</div>
-						</div>
-						<div class="row">
-							<div class="col-12 col-sm-4 col-md-5 col-lg-4">
-								<div class="stars">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-							</div>
-							<div class="col-10 col-sm-5 prog-bar">
-								<div class="progress">
-									<div
-										class="progress-bar"
-										role="progressbar"
-										style="width: 25%"
-										aria-valuenow="25"
-										aria-valuemin="0"
-										aria-valuemax="100"
-									></div>
-								</div>
-							</div>
-							<div class="col-2 col-sm-1">33</div>
-						</div>
-						<div class="row">
-							<div class="col-12 col-sm-4 col-md-5 col-lg-4">
-								<div class="stars">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-							</div>
-							<div class="col-10 col-sm-5 prog-bar">
-								<div class="progress">
-									<div
-										class="progress-bar"
-										role="progressbar"
-										style="width: 25%"
-										aria-valuenow="25"
-										aria-valuemin="0"
-										aria-valuemax="100"
-									></div>
-								</div>
-							</div>
-							<div class="col-2 col-sm-1">33</div>
-						</div>
-						<div class="row">
-							<div class="col-12 col-sm-4 col-md-5 col-lg-4">
-								<div class="stars">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-							</div>
-							<div class="col-10 col-sm-5 prog-bar">
-								<div class="progress">
-									<div
-										class="progress-bar"
-										role="progressbar"
-										style="width: 25%"
-										aria-valuenow="25"
-										aria-valuemin="0"
-										aria-valuemax="100"
-									></div>
-								</div>
-							</div>
-							<div class="col-2 col-sm-1">33</div>
 						</div>
 					</div>
 				</div>
@@ -627,56 +537,38 @@
 				</div>
 
 				<div class="all-comments">
-					<div class="comments">
+					<div class="comments" *ngFor="let review of product.reviews">
 						<div class="row">
 							<div class="col-8">
 								<div class="stars">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
+									<bar-rating
+										[rate]="review.rating"
+										[max]="5"
+										[readOnly]="true"
+									></bar-rating>
 								</div>
 								<div class="by-user">
-									<span class="user">by {{ "Hassan N." }}</span>
-									<span class="verified-purchase"> Verified Purchase</span>
+									<span class="user">by {{ review.reviewBy }}</span>
+									<span
+										class="verified-purchase"
+										*ngIf="review.verifiedPurchase"
+									>
+										Verified Purchase</span
+									>
 								</div>
 								<div class="comment">
-									{{
-										"product is as shown in pictures. good quality. price is also reasonable from market. received in time."
-									}}
+									{{ review.comment }}
 								</div>
-								<div class="images">
-									<img
-										src="assets/images/products/fridge-storage-basket.jpg"
-										alt="fridge-storage-basket"
-									/>
-									<img
-										src="assets/images/products/fridge-storage-basket.jpg"
-										alt="fridge-storage-basket"
-									/>
-									<img
-										src="assets/images/products/fridge-storage-basket.jpg"
-										alt="fridge-storage-basket"
-									/>
-									<img
-										src="assets/images/products/fridge-storage-basket.jpg"
-										alt="fridge-storage-basket"
-									/>
-									<img
-										src="assets/images/products/fridge-storage-basket.jpg"
-										alt="fridge-storage-basket"
-									/>
-									<img
-										src="assets/images/products/fridge-storage-basket.jpg"
-										alt="fridge-storage-basket"
-									/>
+								<div class="images" *ngIf="review.images">
+									<img *ngFor="let image of review.images" [src]="image" />
 								</div>
-								<div class="prod-features">
+								<!-- <div class="prod-features">
 									Color Family: Black, Size: Int: normal
-								</div>
+								</div> -->
 							</div>
-							<div class="col-4 commented-on">6 days ago</div>
+							<div class="col-4 commented-on">
+								{{ review.reviewDate | dateAgo }}
+							</div>
 						</div>
 						<div class="row likes">
 							<div class="col-8">

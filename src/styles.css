@@ -14,3 +14,46 @@ button:focus,
 .btn:focus {
 	box-shadow: none !important;
 }
+
+/* Rating Stars and Bars */
+.br {
+	margin: 0% !important;
+}
+
+.br-default .br-units {
+  align-items: center;
+}
+
+.br-default .br-unit {
+	margin-right: 3px;
+	font: normal normal normal 12px/1 FontAwesome;
+}
+
+.product-rate-review .ratings .stars .br-default .br-unit {
+	margin-right: 0.5rem;
+	font: normal normal normal 40px/1 FontAwesome;
+}
+
+.product-rate-review .ratings .last-five .stars .br-default .br-unit {
+	font: normal normal normal 24px/1 FontAwesome;
+}
+
+.product-rate-review .reviews .comments .stars .br-default .br-unit {
+	margin-right: 0.25rem;
+	font: normal normal normal 1rem/1 FontAwesome;
+}
+
+.br-default .br-unit:after {
+	content: '\f005';
+	color: #d2d2d2;
+}
+
+.br-default .br-selected:after {
+	color: #faca51;
+}
+
+.br-default .br-active:after {
+  color: #EDB867;
+}
+
+/* Rating Stars and Bars */

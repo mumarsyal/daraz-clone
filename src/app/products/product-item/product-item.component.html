@@ -41,11 +41,11 @@
 			</div>
 			<div class="rating-reviews">
 				<div class="rating">
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
+					<bar-rating
+						[rate]="product.rating"
+						[max]="5"
+						[readOnly]="true"
+					></bar-rating>
 				</div>
 				<div class="reviews">({{ product.noOfRatings }})</div>
 			</div>
