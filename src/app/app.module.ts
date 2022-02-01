@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { BarRatingModule } from 'ngx-bar-rating';
 
@@ -64,6 +66,8 @@ import { DateAgoPipe } from './pipes/date-ago.pipe';
 		HttpClientModule,
 		BarRatingModule,
 		AppRoutingModule,
+		BrowserAnimationsModule,
+		MatPaginatorModule
 	],
 	providers: [
 		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

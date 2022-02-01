@@ -21,7 +21,7 @@
 				<label
 					[for]="'brand' + i"
 					*ngFor="let brand of brands; let i = index"
-					(click)="filterProducts('brand', brand)"
+					(click)="filterProducts({filter: 'brand', value: brand})"
 				>
 					<input
 						type="checkbox"
@@ -40,7 +40,7 @@
 				<label
 					[for]="'seller' + i"
 					*ngFor="let seller of sellers; let i = index"
-					(click)="filterProducts('seller', seller._id)"
+					(click)="filterProducts({filter: 'seller', value: seller._id})"
 				>
 					<input
 						type="checkbox"
@@ -58,7 +58,7 @@
 			<div class="filter-options">
 				<label
 					[for]="'category' + i"
-					(click)="filterProducts('category', category._id)"
+					(click)="filterProducts({filter: 'category', value: category._id})"
 					*ngFor="let category of categories; let i = index"
 				>
 					<input
@@ -86,30 +86,30 @@
 	</div>
 </aside>
 
-<main *ngIf="!loading">
+<main [hidden]="loading">
 	<div class="info-controls">
-		<div class="info no-of-items">{{ fetchedProducts }} items found</div>
+		<div class="info no-of-items">{{ filteredProducts }} items found</div>
 		<div class="controls pull-right">
 			<div class="sort-by me-2">
 				<label for="sort-by">Sort By: </label>
 				<select class="ms-2 me-2" name="sort" id="sort-by">
 					<option
 						[selected]="!filtersApplied.sort"
-						(click)="filterProducts('sort', null)"
+						(click)="filterProducts({filter: 'sort', value: null})"
 					>
 						----
 					</option>
 					<option
 						value="title"
 						[selected]="filtersApplied.sort === 'title'"
-						(click)="filterProducts('sort', 'title')"
+						(click)="filterProducts({filter: 'sort', value: 'title'})"
 					>
 						Name
 					</option>
 					<option
 						value="price"
 						[selected]="filtersApplied.sort === 'price'"
-						(click)="filterProducts('sort', 'price')"
+						(click)="filterProducts({filter: 'sort', value: 'price'})"
 					>
 						Price
 					</option>
@@ -132,4 +132,12 @@
 	</div>
 
 	<div class="row" *ngIf="fetchedProducts <= 0">No items found!</div>
+
+	<mat-paginator
+		[length]="filteredProducts"
+		[pageSize]="filtersApplied.pageSize"
+		[pageSizeOptions]="pageSizeOptions"
+		(page)="filterProducts({ pageData: $event })"
+	>
+	</mat-paginator>
 </main>

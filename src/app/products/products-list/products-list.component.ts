@@ -1,6 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
@@ -13,7 +14,7 @@ import { CategoryService } from '../../categories/category.service';
 	templateUrl: './products-list.component.html',
 	styleUrls: ['./products-list.component.css'],
 })
-export class ProductsListComponent implements OnInit, OnDestroy {
+export class ProductsListComponent implements OnInit, OnDestroy, AfterViewInit {
 	loading: boolean = false;
 	loadingBrands: boolean = false;
 	loadingSellers: boolean = false;
@@ -21,15 +22,20 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 	products: Product[] = [];
 	totalProducts: number = 0;
 	fetchedProducts: number = 0;
+	filteredProducts: number = 0;
 	brands: string[] = [];
 	sellers: Seller[] = [];
 	categories: Category[] = [];
+	pageSizeOptions = [1, 4, 8, 12];
 	filtersApplied = {
 		brand: [],
 		seller: [],
 		category: [],
 		sort: null,
+		pageSize: 12,
+		pageNum: 1,
 	};
+	@ViewChild(MatPaginator, { static: false }) paginator: MatPaginator
 	queryParamSub: Subscription;
 
 	constructor(
@@ -98,11 +104,26 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 			if (queryParams['sort']) {
 				this.filtersApplied.sort = queryParams['sort'];
 			}
+			if (queryParams['pageSize']) {
+				this.filtersApplied.pageSize = +queryParams['pageSize'];
+			}
+			if (queryParams['pageNum']) {
+				this.filtersApplied.pageNum = +queryParams['pageNum'];
+			}
+
+			if (!queryParams['pageSize'] && !queryParams['pageNum']) {
+				queryParams = {
+					...queryParams,
+					pageSize: this.filtersApplied.pageSize,
+					pageNum: this.filtersApplied.pageNum,
+				};
+			}
 
 			this.productService.getProducts(queryParams).subscribe((result) => {
 				this.products = result.products;
 				this.totalProducts = result.totalProducts;
 				this.fetchedProducts = result.fetchedProducts;
+				this.filteredProducts = result.filteredProducts;
 
 				this.loading = false;
 			});
@@ -124,17 +145,35 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 		});
 	}
 
-	filterProducts(filter: string, value: string) {
-		if (filter === 'sort') {
-			this.filtersApplied.sort = value;
-		} else {
-			const index = this.filtersApplied[filter].indexOf(value);
+	ngAfterViewInit(): void {
+		this.paginator.pageSize = this.filtersApplied.pageSize;
+		this.paginator.pageIndex = this.filtersApplied.pageNum - 1;
+	}
 
-			if (index > -1) {
-				this.filtersApplied[filter].splice(index, 1);
+	filterProducts(filterBy: {
+		filter?: string;
+		value?: string;
+		pageData?: PageEvent;
+	}) {
+		if (filterBy.filter && filterBy.value) {
+			if (filterBy.filter === 'sort') {
+				this.filtersApplied[filterBy.filter] = filterBy.value;
 			} else {
-				this.filtersApplied[filter].push(value);
+				const index = this.filtersApplied[filterBy.filter].indexOf(
+					filterBy.value
+				);
+
+				if (index > -1) {
+					this.filtersApplied[filterBy.filter].splice(index, 1);
+				} else {
+					this.filtersApplied[filterBy.filter].push(filterBy.value);
+				}
 			}
+		}
+
+		if (filterBy.pageData) {
+			this.filtersApplied.pageSize = filterBy.pageData.pageSize;
+			this.filtersApplied.pageNum = filterBy.pageData.pageIndex + 1;
 		}
 
 		let qParams = { ...this.filtersApplied };
@@ -150,6 +189,12 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 		}
 		if (!qParams.sort) {
 			delete qParams.sort;
+		}
+		if (!qParams.pageNum) {
+			delete qParams.pageNum;
+		}
+		if (!qParams.pageSize) {
+			delete qParams.pageSize;
 		}
 
 		this.router.navigate([], {
