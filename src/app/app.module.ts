@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { BarRatingModule } from 'ngx-bar-rating';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -27,6 +31,7 @@ import { CategoryItemComponent } from './categories/category-item/category-item.
 import { CategoryListComponent } from './categories/category-list/category-list.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AddProductComponent } from './products/add-product/add-product.component';
+import { DateAgoPipe } from './pipes/date-ago.pipe';
 
 @NgModule({
 	declarations: [
@@ -52,13 +57,17 @@ import { AddProductComponent } from './products/add-product/add-product.componen
 		CategoryItemComponent,
 		CategoryListComponent,
 		AddProductComponent,
+		DateAgoPipe,
 	],
 	imports: [
 		BrowserModule,
 		FormsModule,
 		ReactiveFormsModule,
 		HttpClientModule,
+		BarRatingModule,
 		AppRoutingModule,
+		BrowserAnimationsModule,
+		MatPaginatorModule
 	],
 	providers: [
 		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

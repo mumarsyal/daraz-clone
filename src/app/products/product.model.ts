@@ -1,5 +1,6 @@
 import { Category } from '../categories/category.model';
 import { Seller } from '../shared/seller.model';
+import { Review } from './review.model';
 
 export interface Product {
 	_id?: string;
@@ -23,15 +24,5 @@ export interface Product {
 	inTheBox: [string];
 	category: Category;
 	seller: Seller;
-	reviews?: [
-		{
-			_id?: string;
-			reviewBy: string;
-			rating?: number;
-			verifiedPurchase?: boolean;
-			reviewDate?: Date;
-			comment: string;
-			product: Product;
-		}
-	];
+	reviews?: [Review];
 }

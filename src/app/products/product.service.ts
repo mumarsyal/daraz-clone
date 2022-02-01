@@ -55,6 +55,7 @@ export class ProductService {
 			products: Product[];
 			totalProducts: number;
 			fetchedProducts: number;
+			filteredProducts: number;
 		}>(`${this.productsApiUrlPrefix}`, {
 			params: queryParams,
 		});

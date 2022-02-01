@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { AuthService } from '../auth.service';
-import { validateEmail } from '../email.validator';
 
 @Component({
 	selector: 'app-login',
