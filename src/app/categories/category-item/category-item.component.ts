@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -19,6 +19,11 @@ export class CategoryItemComponent implements OnInit {
 	userIsAuthenticated: boolean = false;
 	activeRoute: string = null;
 	private authStatusSub: Subscription;
+	@Output() confirmDelete = new EventEmitter<{
+		categoryId: string;
+		categoryTitle: string;
+		showDialog: boolean;
+	}>();
 
 	constructor(
 		private categoryService: CategoryService,
@@ -35,9 +40,11 @@ export class CategoryItemComponent implements OnInit {
 			});
 	}
 
-	onDeleteCategory(id: string) {
-		this.categoryService.deleteCategory(id).subscribe((result) => {
-			this.router.navigate(['/categories']);
+	onDeleteCategory() {
+		this.confirmDelete.emit({
+			categoryId: this.category._id,
+			categoryTitle: this.category.title,
+			showDialog: true,
 		});
 	}
 

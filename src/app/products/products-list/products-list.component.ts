@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+	AfterViewInit,
+	Component,
+	OnDestroy,
+	OnInit,
+	ViewChild,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -35,7 +41,7 @@ export class ProductsListComponent implements OnInit, OnDestroy, AfterViewInit {
 		pageSize: 12,
 		pageNum: 1,
 	};
-	@ViewChild(MatPaginator, { static: false }) paginator: MatPaginator
+	@ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 	queryParamSub: Subscription;
 
 	constructor(
@@ -155,7 +161,7 @@ export class ProductsListComponent implements OnInit, OnDestroy, AfterViewInit {
 		value?: string;
 		pageData?: PageEvent;
 	}) {
-		if (filterBy.filter && filterBy.value) {
+		if (filterBy.filter) {
 			if (filterBy.filter === 'sort') {
 				this.filtersApplied[filterBy.filter] = filterBy.value;
 			} else {
