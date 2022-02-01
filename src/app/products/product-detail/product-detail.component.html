@@ -87,7 +87,8 @@
 								</div>
 								<div class="from-brand">
 									<a style="cursor: pointer">
-										More {{ product.category.title }} from
+										More
+										{{ product.category ? product.category.title : "" }} from
 										{{ product.brand || "No Brand" }}
 									</a>
 								</div>
@@ -198,7 +199,7 @@
 							</div>
 							<div class="actions" *ngIf="userIsAuthenticated">
 								<div class="row">
-									<button class="btn btn-danger" (click)="onDeleteProduct()">
+									<button class="btn btn-danger" (click)="onShowModal()">
 										Delete
 									</button>
 								</div>
@@ -635,6 +636,45 @@
 						</ul>
 					</nav>
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" [style.display]="modalDisplay">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Confirm Delete Product</h5>
+				<button
+					type="button"
+					class="close"
+					data-dismiss="modal"
+					aria-label="Close"
+					(click)="onCloseModal()"
+				>
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>Are you sure you want to delete "{{ product.title }}".</p>
+			</div>
+			<div class="modal-footer">
+				<button
+					type="button"
+					class="btn btn-danger"
+					(click)="onDeleteProduct()"
+				>
+					Delete
+				</button>
+				<button
+					type="button"
+					class="btn btn-secondary"
+					data-dismiss="modal"
+					(click)="onCloseModal()"
+				>
+					Cancel
+				</button>
 			</div>
 		</div>
 	</div>

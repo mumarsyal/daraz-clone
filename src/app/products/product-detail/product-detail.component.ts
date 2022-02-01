@@ -21,6 +21,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 	paramSub: Subscription;
 	product: Product;
 	productsFromSameSeller: Product[];
+	modalDisplay: string = 'none';
 
 	constructor(
 		private productService: ProductService,
@@ -65,6 +66,14 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 		if (+quantity.value >= 10) {
 			this.billToPay = this.billToPay - 30;
 		}
+	}
+
+	onShowModal() {
+		this.modalDisplay = 'block';
+	}
+
+	onCloseModal() {
+		this.modalDisplay = 'none';
 	}
 
 	onDeleteProduct() {

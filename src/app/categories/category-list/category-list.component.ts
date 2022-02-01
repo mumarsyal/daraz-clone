@@ -11,6 +11,15 @@ import { CategoryService } from '../category.service';
 })
 export class CategoryListComponent implements OnInit {
 	loading: boolean = false;
+	deleteInfo: {
+		categoryId: string;
+		categoryTitle: string;
+		showDialog: string;
+	} = {
+		categoryId: '',
+		categoryTitle: '',
+		showDialog: 'none',
+	};
 	activeRoute: string = null;
 	categories: Category[] = [];
 
@@ -32,5 +41,32 @@ export class CategoryListComponent implements OnInit {
 			this.categories = data.categories;
 			this.loading = false;
 		});
+	}
+
+	onShowModal(event: {
+		categoryId: string;
+		categoryTitle: string;
+		showDialog: boolean;
+	}) {
+		this.deleteInfo.categoryId = event.categoryId;
+		this.deleteInfo.categoryTitle = event.categoryTitle;
+		this.deleteInfo.showDialog = event.showDialog ? 'block' : 'none';
+	}
+
+	onCloseModal() {
+		this.deleteInfo = {
+			categoryId: '',
+			categoryTitle: '',
+			showDialog: 'none',
+		};
+	}
+
+	onConfirmDeleteCategory() {
+		this.loading = true;
+		this.categoryService
+			.deleteCategory(this.deleteInfo.categoryId)
+			.subscribe((result) => {
+				this.router.navigate(['/categories']);
+			});
 	}
 }
