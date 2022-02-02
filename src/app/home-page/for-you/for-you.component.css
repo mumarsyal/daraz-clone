@@ -6,6 +6,11 @@
 	/* margin-left: -0.8rem; */
 }
 
+.d-flex.justify-content-center > .spinner-grow {
+	width: 5rem;
+	height: 5rem;
+}
+
 .for-you .for-you-card {
 	border: none;
 	border-radius: 0%;
