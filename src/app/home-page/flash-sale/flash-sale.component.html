@@ -8,14 +8,22 @@
 			</div>
 			<div class="timer">
 				<span>Ending in</span>
-				<span class="timer-time">06</span>
+				<span class="timer-time">{{
+					endingInHours.length < 2 ? "0" + endingInHours : endingInHours
+				}}</span>
 				<span class="timer-colon">:</span>
-				<span class="timer-time">06</span>
+				<span class="timer-time">{{
+					endingInMinutes.length < 2 ? "0" + endingInMinutes : endingInMinutes
+				}}</span>
 				<span class="timer-colon">:</span>
-				<span class="timer-time">06</span>
+				<span class="timer-time">{{
+					endingInSeconds.length < 2 ? "0" + endingInSeconds : endingInSeconds
+				}}</span>
 			</div>
 			<div class="shop-more">
-				<a class="btn btn-outline-warning" [routerLink]="['/products']">Shop More</a>
+				<a class="btn btn-outline-warning" [routerLink]="['/products']">
+					Shop More
+				</a>
 			</div>
 		</div>
 
@@ -26,11 +34,7 @@
 					*ngFor="let saleItem of saleItems"
 				>
 					<a href="">
-						<img
-							[src]="saleItem.image_src"
-							class="card-img-top"
-							alt="..."
-						/>
+						<img [src]="saleItem.image_src" class="card-img-top" alt="..." />
 						<div class="card-body">
 							<div class="card-title">
 								{{ saleItem.title }}
@@ -45,10 +49,7 @@
 								<div class="price-was">
 									<span class="currency">Rs.</span>
 									<span class="original-price">
-										{{
-											saleItem.orig_price
-												| number: "":"en-US"
-										}}
+										{{ saleItem.orig_price | number: "":"en-US" }}
 									</span>
 								</div>
 								<div class="discount">
