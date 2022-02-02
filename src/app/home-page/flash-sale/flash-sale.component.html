@@ -1,6 +1,12 @@
 <h3 class="section-title">Flash Sale</h3>
 
-<div class="row">
+<div class="d-flex justify-content-center" *ngIf="loading">
+	<div class="spinner-grow text-primary" role="status">
+		<span class="sr-only">Loading...</span>
+	</div>
+</div>
+
+<div class="row" *ngIf="!loading">
 	<div class="card">
 		<div class="card-header">
 			<div class="info">
@@ -8,14 +14,22 @@
 			</div>
 			<div class="timer">
 				<span>Ending in</span>
-				<span class="timer-time">06</span>
+				<span class="timer-time">{{
+					endingInHours.length < 2 ? "0" + endingInHours : endingInHours
+				}}</span>
 				<span class="timer-colon">:</span>
-				<span class="timer-time">06</span>
+				<span class="timer-time">{{
+					endingInMinutes.length < 2 ? "0" + endingInMinutes : endingInMinutes
+				}}</span>
 				<span class="timer-colon">:</span>
-				<span class="timer-time">06</span>
+				<span class="timer-time">{{
+					endingInSeconds.length < 2 ? "0" + endingInSeconds : endingInSeconds
+				}}</span>
 			</div>
 			<div class="shop-more">
-				<a class="btn btn-outline-warning" [routerLink]="['/products']">Shop More</a>
+				<a class="btn btn-outline-warning" [routerLink]="['/products']">
+					Shop More
+				</a>
 			</div>
 		</div>
 
@@ -25,11 +39,11 @@
 					class="col-sm-4 col-lg-2 card sale-item"
 					*ngFor="let saleItem of saleItems"
 				>
-					<a href="">
+					<a [routerLink]="['/products/detail', saleItem._id]">
 						<img
-							[src]="saleItem.image_src"
+							[src]="saleItem.thumbnail"
 							class="card-img-top"
-							alt="..."
+							alt="thumbnail"
 						/>
 						<div class="card-body">
 							<div class="card-title">
@@ -38,21 +52,22 @@
 							<div class="price">
 								<span class="currency">Rs.</span>
 								<span class="price">
-									{{ saleItem.price | number: "":"en-US" }}
+									{{ saleItem.currentPrice | number: "":"en-US" }}
 								</span>
 							</div>
-							<div class="original-price">
+							<div class="original-price" *ngIf="saleItem.oldPrice > 0">
 								<div class="price-was">
 									<span class="currency">Rs.</span>
 									<span class="original-price">
-										{{
-											saleItem.orig_price
-												| number: "":"en-US"
-										}}
+										{{ saleItem.oldPrice | number: "":"en-US" }}
 									</span>
 								</div>
 								<div class="discount">
-									-{{ saleItem.discount | number: "1.0-0" }}%
+									-{{
+										((saleItem.oldPrice - saleItem.currentPrice) /
+											saleItem.oldPrice) *
+											100 | number: "1.0-0"
+									}}%
 								</div>
 							</div>
 						</div>

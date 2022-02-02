@@ -75,17 +75,27 @@
 					</label>
 				</div>
 			</div>
-			<!-- <div class="price">
-			<div class="filter-type">Price</div>
-			<div class="filter-options">
-				<input type="number" placeholder="Min" />
-				<span> - </span>
-				<input type="number" placeholder="Max" />
-				<button class="btn btn-warning">
-					<i class="fa fa-play"></i>
-				</button>
+			<div class="price">
+				<div class="filter-type">Price</div>
+				<div class="filter-options">
+					<input
+						type="number"
+						placeholder="Min"
+						name="minPrice"
+						[(ngModel)]="filtersApplied.minPrice"
+					/>
+					<span> - </span>
+					<input
+						type="number"
+						placeholder="Max"
+						name="maxPrice"
+						[(ngModel)]="filtersApplied.maxPrice"
+					/>
+					<button class="btn btn-warning" (click)="filterProducts({})">
+						<i class="fa fa-play"></i>
+					</button>
+				</div>
 			</div>
-		</div> -->
 		</div>
 	</aside>
 

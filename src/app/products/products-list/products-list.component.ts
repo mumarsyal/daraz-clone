@@ -40,6 +40,8 @@ export class ProductsListComponent implements OnInit, OnDestroy, AfterViewInit {
 		sort: null,
 		pageSize: 12,
 		pageNum: 1,
+		minPrice: null,
+		maxPrice: null,
 	};
 	@ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 	queryParamSub: Subscription;
@@ -115,6 +117,12 @@ export class ProductsListComponent implements OnInit, OnDestroy, AfterViewInit {
 			}
 			if (queryParams['pageNum']) {
 				this.filtersApplied.pageNum = +queryParams['pageNum'];
+			}
+			if (queryParams['minPrice']) {
+				this.filtersApplied.minPrice = +queryParams['minPrice'];
+			}
+			if (queryParams['maxPrice']) {
+				this.filtersApplied.maxPrice = +queryParams['maxPrice'];
 			}
 
 			if (!queryParams['pageSize'] && !queryParams['pageNum']) {
@@ -201,6 +209,12 @@ export class ProductsListComponent implements OnInit, OnDestroy, AfterViewInit {
 		}
 		if (!qParams.pageSize) {
 			delete qParams.pageSize;
+		}
+		if (!qParams.minPrice) {
+			delete qParams.minPrice;
+		}
+		if (!qParams.maxPrice) {
+			delete qParams.maxPrice;
 		}
 
 		this.router.navigate([], {

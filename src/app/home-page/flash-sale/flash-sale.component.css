@@ -1,6 +1,13 @@
 .section-title {
 	color: #757575;
+	font-size: 1.33rem;
+	font-weight: 400;
 	/* margin-left: -0.8rem; */
+}
+
+.d-flex.justify-content-center > .spinner-grow {
+	width: 5rem;
+	height: 5rem;
 }
 
 .card {

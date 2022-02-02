@@ -21,7 +21,12 @@
 	width: 2rem;
 	border: 1px solid #f57123;
 	border-radius: 10%;
-	margin-right: 5px;
+	margin-right: 0.15rem;
+	margin-bottom: 0.15rem;
+}
+
+.product-card .variants > div:nth-child(5n) img {
+	margin-right: 0;
 }
 
 .product-card .card-body .offer-by {
