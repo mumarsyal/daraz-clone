@@ -10,6 +10,7 @@
 .main-content {
 	padding: 2rem 2rem 0;
 	background-color: #fff;
+	overflow: auto;
 }
 
 aside {
